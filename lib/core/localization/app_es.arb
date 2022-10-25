@@ -1,0 +1,17 @@
+{
+  "aboutApp": "Acerca de",
+  "version": "Versión",
+  "appCreatedAt": "dvp_technical_test, 2020",
+  "dateSelectionTitle": ", qué buena elección",
+  "dateSelectionSubtitle": "Ahora selecciona cuándo será tu reunión y filtraremos los chef disponibles.",
+  "selectATime": "Selecciona un horario",
+  "save": "Guardar",
+  "invalidDate": "No puede seleccionar una fecha menor a la actual",
+  "close": "Cerrar",
+  "invalidTime": "No puede seleccionar una hora menor a la actual",
+  "invalidTimeInterval": "La hora final no puede ser menor que la inicial",
+  "homeTitle": "¡Hola",
+  "homeSubtitle": "Bienvenido de vuelta, cuéntanos, ¿Qué vamos a hacer hoy?",
+  "endsAt": "Finaliza a las",
+  "startAt": "Inicia a las"
+}
