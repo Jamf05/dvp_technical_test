@@ -10,11 +10,13 @@ class CustomInvisibleAppBar extends StatelessWidget
   final double? toolbarHeight;
   final PreferredSizeWidget? bottom;
   final Widget? leading;
+  final List<Widget>? actions;
   CustomInvisibleAppBar({
     Key? key,
     this.bottom,
     this.toolbarHeight,
     this.leading,
+    this.actions,
   })  : preferredSize =
             _PreferredAppBarSize(toolbarHeight, bottom?.preferredSize.height),
         super(key: key);
@@ -23,6 +25,8 @@ class CustomInvisibleAppBar extends StatelessWidget
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
+      bottom: bottom,
+      actions: actions,
       leading: leading ??
           BackButton(
               color: AppTheme.isDark

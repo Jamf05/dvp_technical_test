@@ -1,7 +1,7 @@
 import 'package:dvp_technical_test/core/widget/base_widget.dart';
 import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AddressItemWidget extends StatelessWidget with BaseWidget {
   final AddressEntity data;
@@ -24,8 +24,8 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             IconButton(
-              icon: Icon(
-                MdiIcons.mapMarker,
+              icon: SvgPicture.asset(
+                Assets.icons.mapPin,
                 color: (data.principal == true)
                     ? AppTheme.selected.primaryColor
                     : AppColors.greyFirst,
@@ -62,15 +62,15 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                     return Row(
                       children: [
                         InkWell(
-                            child: const Icon(
-                              MdiIcons.pencilOutline,
+                            child: SvgPicture.asset(
+                              Assets.icons.editIcon,
                               color: AppColors.greyFirst,
                             ),
                             onTap: () => onEdit.call(data)),
-                        const SizedBox(width: 5,),
+                        const SizedBox(width: 10,),
                         InkWell(
-                            child: const Icon(
-                              MdiIcons.deleteOutline,
+                            child: SvgPicture.asset(
+                              Assets.icons.deleteIcon,
                               color: AppColors.greyFirst,
                             ),
                             onTap: () => onDelete.call(data)),
@@ -78,9 +78,12 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                     );
                   }
                   return InkWell(
-                      child: const Icon(
-                        MdiIcons.dotsVertical,
-                        color: AppColors.blackFirst,
+                      child: SizedBox(
+                        width: 30,
+                        child: SvgPicture.asset(
+                          Assets.icons.dotsVerticalIcon,
+                          color: AppColors.blackFirst,
+                        ),
                       ),
                       onTap: () => showMoreOptions.value = true);
                 }),

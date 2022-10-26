@@ -223,7 +223,7 @@ class Show {
                     const SizedBox(
                       height: 34.78,
                     ),
-                    Text(title ?? '', style: titleStyle ?? AppFonts.promptM17),
+                    Text(title ?? '', style: titleStyle ?? AppFonts.promptM17, textAlign: TextAlign.center,),
                     const SizedBox(
                       height: 18.11,
                     ),

@@ -20,5 +20,10 @@
   "birthdayWord": "Fecha de nacimiento",
   "addressWord": "Dirección",
   "createWord": "Crear",
-  "editWord": "Editar"
+  "editWord": "Editar",
+  "deleteWord": "Eliminar",
+  "confirmDeleteAddressPhrase": "¿Estas seguro?",
+  "yesWord": "Si",
+  "noWord": "No",
+  "newAddressWord": "Nueva dirección"
 }

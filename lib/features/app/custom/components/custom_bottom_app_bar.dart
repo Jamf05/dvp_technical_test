@@ -43,12 +43,11 @@ class CustomBottomAppBar extends BaseStateless {
               width: 20.0,
             ),
             onPressed: () async {
-              final v = await PackageInfo.fromPlatform();
-              show.dialog(
+              Show.of(context).dialog(
                   title: l10n.aboutApp,
                   useSingleAction: true,
                   message:
-                      "${l10n.version} ${v.version} (${Env.releaseDate}) \n ${l10n.appCreatedAt}");
+                      "${l10n.version} ${Env.version} (${Env.releaseDate}) \n ${l10n.appCreatedAt}");
             }),
       ],
     ));

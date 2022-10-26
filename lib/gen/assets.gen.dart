@@ -50,8 +50,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/checkoutIcon.svg
   String get checkoutIcon => 'assets/icons/checkoutIcon.svg';
 
+  /// File path: assets/icons/delete_icon.svg
+  String get deleteIcon => 'assets/icons/delete_icon.svg';
+
   /// File path: assets/icons/dislike_icon.svg
   String get dislikeIcon => 'assets/icons/dislike_icon.svg';
+
+  /// File path: assets/icons/dots_vertical_icon.svg
+  String get dotsVerticalIcon => 'assets/icons/dots_vertical_icon.svg';
+
+  /// File path: assets/icons/edit_icon.svg
+  String get editIcon => 'assets/icons/edit_icon.svg';
 
   /// File path: assets/icons/favoriteblack.svg
   String get favoriteblack => 'assets/icons/favoriteblack.svg';
@@ -77,6 +86,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/loaded_icon.svg
   String get loadedIcon => 'assets/icons/loaded_icon.svg';
 
+  /// File path: assets/icons/map_pin.svg
+  String get mapPin => 'assets/icons/map_pin.svg';
+
   /// File path: assets/icons/payment_icon.svg
   String get paymentIcon => 'assets/icons/payment_icon.svg';
 
@@ -98,7 +110,10 @@ class $AssetsIconsGen {
   /// List of all assets
   List<String> get values => [
         checkoutIcon,
+        deleteIcon,
         dislikeIcon,
+        dotsVerticalIcon,
+        editIcon,
         favoriteblack,
         favoritered,
         fbIcon,
@@ -107,6 +122,7 @@ class $AssetsIconsGen {
         home,
         instagramIcon,
         loadedIcon,
+        mapPin,
         paymentIcon,
         question,
         search,

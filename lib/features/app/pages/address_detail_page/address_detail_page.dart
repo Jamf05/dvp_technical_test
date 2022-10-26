@@ -3,14 +3,16 @@ import 'package:dvp_technical_test/features/app/custom/components/custom_invisib
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/custom_text_field.dart';
 import 'package:dvp_technical_test/features/app/pages/address_detail_page/widgets/address_detail_title_widget.dart';
+import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
 import 'package:flutter/material.dart';
 
 enum AddressDetailAction { edit, create }
 
 class AddressDetailPage extends BaseStateless {
   static const route = "/AddressDetailPage";
+  final AddressEntity? address;
   final AddressDetailAction action;
-  const AddressDetailPage({Key? key, required this.action}) : super(key: key);
+  const AddressDetailPage({Key? key, required this.action, this.address}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     BaseStateless.init(context);
@@ -28,6 +30,7 @@ class AddressDetailPage extends BaseStateless {
                 height: size.height * 0.1,
               ),
               CustomTextField(
+                initialValue: address?.name,
                 labelText: l10n.addressWord,
                 validator: (_) => null,
                 onChanged: (String v) => null,

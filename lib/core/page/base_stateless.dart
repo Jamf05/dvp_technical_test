@@ -1,15 +1,14 @@
 export 'package:dvp_technical_test/core/utils/navigation.dart';
 export 'package:dvp_technical_test/core/settings/app_settings.dart';
+export 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
 
 import 'package:flutter/material.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';
-import 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
 import 'package:dvp_technical_test/core/settings/app_settings.dart';
 
 abstract class BaseStateless extends StatelessWidget {
   static late AppLocalizations _l10n;
   static late Size _size;
-  static late Show _show;
 
   AppFonts get fonts => AppSettings.fonts;
   AppColors get colors => AppSettings.colors;
@@ -22,10 +21,8 @@ abstract class BaseStateless extends StatelessWidget {
   const BaseStateless({Key? key}) : super(key: key); 
   AppLocalizations get l10n => BaseStateless._l10n;
   Size get size => BaseStateless._size;
-  Show get show => BaseStateless._show;
   static void init(BuildContext context) {
     _l10n = AppLocalizations.of(context);
     _size = MediaQuery.of(context).size;
-    _show = Show.of(context);
   }
 }

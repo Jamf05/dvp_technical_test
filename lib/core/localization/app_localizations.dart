@@ -224,6 +224,36 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Editar'**
   String get editWord;
+
+  /// No description provided for @deleteWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar'**
+  String get deleteWord;
+
+  /// No description provided for @confirmDeleteAddressPhrase.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Estas seguro?'**
+  String get confirmDeleteAddressPhrase;
+
+  /// No description provided for @yesWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Si'**
+  String get yesWord;
+
+  /// No description provided for @noWord.
+  ///
+  /// In es, this message translates to:
+  /// **'No'**
+  String get noWord;
+
+  /// No description provided for @newAddressWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva dirección'**
+  String get newAddressWord;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

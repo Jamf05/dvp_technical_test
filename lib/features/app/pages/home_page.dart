@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:dvp_technical_test/core/validators/text_input.dart';
 import 'package:dvp_technical_test/features/app/bindings/home_binding.dart';
 import 'package:dvp_technical_test/features/app/custom/components/custom_invisible_app_bar.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
@@ -9,10 +6,10 @@ import 'package:dvp_technical_test/features/app/pages/address_list_page/address_
 import 'package:flutter/material.dart';
 import 'package:dvp_technical_test/injection_container.dart';
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:dvp_technical_test/features/app/blocs/global/global_session_bloc/global_session_bloc.dart';
 import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
   static const route = "/HomePage";
@@ -28,10 +25,24 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
     HomeBinding().dependencies();
     super.dispose();
   }
+
+  List<Widget> get actions => [
+        IconButton(
+            onPressed: () {},
+            icon: Icon(
+                AppTheme.isDark
+                    ? Icons.wb_sunny_outlined
+                    : MdiIcons.weatherNightPartlyCloudy,
+                color: Colors.black))
+      ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomInvisibleAppBar(leading: const SizedBox(),),
+      appBar: CustomInvisibleAppBar(
+        leading: const SizedBox(),
+        actions: actions,
+      ),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -59,7 +70,8 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                 ),
                 CustomTextField(
                   labelText: l10n.nameWord,
-                  validator: (_) => bloc.name.invalid ? l10n.invalidFieldWord : null,
+                  validator: (_) =>
+                      bloc.name.invalid ? l10n.invalidFieldWord : null,
                   onChanged: (String v) => bloc.name = bloc.name.copyWith(v),
                 ),
                 SizedBox(
@@ -81,12 +93,14 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                     labelText: l10n.birthdayWord,
                     validator: (_) =>
                         bloc.birthday.invalid ? l10n.invalidFieldWord : null,
-                    onChanged: (String _) {}, 
+                    onChanged: (String _) {},
                     onTap: () async {
                       final picker = await showDatePicker(
                           context: context,
-                          firstDate: DateTime.now().add(const Duration(days: - 360 * 100)),
-                          initialDate: DateTime.now().add(const Duration(days: - 360 * 18)),
+                          firstDate: DateTime.now()
+                              .add(const Duration(days: -360 * 100)),
+                          initialDate: DateTime.now()
+                              .add(const Duration(days: -360 * 18)),
                           lastDate: DateTime.now());
                       bloc.birthdayDate = picker;
                     }),
@@ -96,9 +110,12 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                 CustomTextField(
                     readOnly: true,
                     labelText: l10n.addressWord,
-                    suffixIcon: const Icon(Icons.chevron_right, color: AppColors.blackSecond,),
+                    suffixIcon: const Icon(
+                      Icons.chevron_right,
+                      color: AppColors.blackSecond,
+                    ),
                     validator: (_) {},
-                    onChanged: (_) {}, 
+                    onChanged: (_) {},
                     onTap: () => nav.to(const AddressListPage())),
               ],
             ),

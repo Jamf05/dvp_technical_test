@@ -28,8 +28,15 @@ class AddressListPage extends BaseStateless {
     ];
     return Scaffold(
         appBar: CustomInvisibleAppBar(),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 23),
+        bottomNavigationBar: ButtonWidget(
+            padding:
+                const EdgeInsets.only(bottom: 10, left: 23, right: 23, top: 10),
+            text: l10n.newAddressWord,
+            onPressed: () => Nav.of(context).to(const AddressDetailPage(
+                  action: AddressDetailAction.create,
+                ))),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.only(left: 23, right: 33),
           child: Column(
             children: [
               const SizedBox(
@@ -45,21 +52,40 @@ class AddressListPage extends BaseStateless {
               ),
               ...example.map((e) => AddressItemWidget(
                     data: e,
-                    onDelete: (AddressEntity address) {},
+                    onDelete: (AddressEntity address) =>
+                        onDelete.call(context, address),
                     onEdit: (AddressEntity address) =>
-                        Nav.of(context).to(const AddressDetailPage(
+                        Nav.of(context).to(AddressDetailPage(
+                      address: e,
                       action: AddressDetailAction.edit,
                     )),
                   )),
-              const Spacer(),
-              ButtonWidget(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  text: "Nueva",
-                  onPressed: () => Nav.of(context).to(const AddressDetailPage(
-                        action: AddressDetailAction.create,
-                      )))
             ],
           ),
+        ));
+  }
+
+  void onDelete(BuildContext context, AddressEntity address) {
+    Show.of(context).modalDefault(
+        title: l10n.confirmDeleteAddressPhrase,
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ButtonWidget(
+              width: (size.width / 2) - 40,
+              text: l10n.yesWord,
+              onPressed: () async {
+                Nav.of(context).back();
+              },
+            ),
+            ButtonWidget(
+              width: (size.width / 2) - 40,
+              text: l10n.noWord,
+              onPressed: () async {
+                Nav.of(context).back();
+              },
+            ),
+          ],
         ));
   }
 }

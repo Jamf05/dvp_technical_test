@@ -69,4 +69,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get editWord => 'Editar';
+
+  @override
+  String get deleteWord => 'Eliminar';
+
+  @override
+  String get confirmDeleteAddressPhrase => '¿Estas seguro?';
+
+  @override
+  String get yesWord => 'Si';
+
+  @override
+  String get noWord => 'No';
+
+  @override
+  String get newAddressWord => 'Nueva dirección';
 }
