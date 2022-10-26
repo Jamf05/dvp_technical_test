@@ -23,13 +23,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get selectATime => 'Selecciona un horario';
 
   @override
-  String get save => 'Guardar';
+  String get saveWord => 'Guardar';
 
   @override
   String get invalidDate => 'No puede seleccionar una fecha menor a la actual';
 
   @override
-  String get close => 'Cerrar';
+  String get closeWord => 'Cerrar';
 
   @override
   String get invalidTime => 'No puede seleccionar una hora menor a la actual';
@@ -63,4 +63,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get addressWord => 'Dirección';
+
+  @override
+  String get createWord => 'Crear';
+
+  @override
+  String get editWord => 'Editar';
 }

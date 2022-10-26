@@ -18,6 +18,8 @@ class CustomTextField extends StatelessWidget with BaseWidget {
   final bool isObscure;
   final Widget? suffix;
   final Widget? prefix;
+  final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
@@ -35,6 +37,8 @@ class CustomTextField extends StatelessWidget with BaseWidget {
     this.isObscure = false,
     this.suffix,
     this.prefix,
+    this.suffixIcon,
+    this.prefixIcon,
     this.keyboardType,
     this.inputFormatters,
     this.readOnly = false,
@@ -57,7 +61,9 @@ class CustomTextField extends StatelessWidget with BaseWidget {
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         suffix: suffix,
+        suffixIcon: suffixIcon,
         prefix: prefix,
+        prefixIcon: prefixIcon,
         contentPadding:
             const EdgeInsets.only(right: 17, left: 17, top: 2, bottom: 2),
         border: AppStyles.borderInput,

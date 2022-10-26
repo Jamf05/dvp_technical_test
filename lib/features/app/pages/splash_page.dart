@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dvp_technical_test/features/app/bindings/home_binding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
@@ -60,10 +61,10 @@ class SplashPageState extends BaseBlocState<SplashPage, SplashBloc> {
       switch (session) {
         case SessionStatus.enabledConfirmed:
         case SessionStatus.waitingToCompleteRegistration:
-          nav.offAll(const HomePage());
+          nav.offAll(const HomePage(), binding: HomeBinding());
           break;
         default:
-          nav.offAll(const HomePage());
+          nav.offAll(const HomePage(), binding: HomeBinding());
       }
     });
   }

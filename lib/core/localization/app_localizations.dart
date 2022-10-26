@@ -129,11 +129,11 @@ abstract class AppLocalizations {
   /// **'Selecciona un horario'**
   String get selectATime;
 
-  /// No description provided for @save.
+  /// No description provided for @saveWord.
   ///
   /// In es, this message translates to:
   /// **'Guardar'**
-  String get save;
+  String get saveWord;
 
   /// No description provided for @invalidDate.
   ///
@@ -141,11 +141,11 @@ abstract class AppLocalizations {
   /// **'No puede seleccionar una fecha menor a la actual'**
   String get invalidDate;
 
-  /// No description provided for @close.
+  /// No description provided for @closeWord.
   ///
   /// In es, this message translates to:
   /// **'Cerrar'**
-  String get close;
+  String get closeWord;
 
   /// No description provided for @invalidTime.
   ///
@@ -212,6 +212,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Dirección'**
   String get addressWord;
+
+  /// No description provided for @createWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Crear'**
+  String get createWord;
+
+  /// No description provided for @editWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar'**
+  String get editWord;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -5,9 +5,9 @@
   "dateSelectionTitle": ", qué buena elección",
   "dateSelectionSubtitle": "Ahora selecciona cuándo será tu reunión y filtraremos los chef disponibles.",
   "selectATime": "Selecciona un horario",
-  "save": "Guardar",
+  "saveWord": "Guardar",
   "invalidDate": "No puede seleccionar una fecha menor a la actual",
-  "close": "Cerrar",
+  "closeWord": "Cerrar",
   "invalidTime": "No puede seleccionar una hora menor a la actual",
   "invalidTimeInterval": "La hora final no puede ser menor que la inicial",
   "helloWord": "Hola",
@@ -18,5 +18,7 @@
   "nameWord": "Nombre",
   "surnameWord": "Apellido",
   "birthdayWord": "Fecha de nacimiento",
-  "addressWord": "Dirección"
+  "addressWord": "Dirección",
+  "createWord": "Crear",
+  "editWord": "Editar"
 }

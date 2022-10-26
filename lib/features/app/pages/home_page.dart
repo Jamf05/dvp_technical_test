@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:dvp_technical_test/core/validators/text_input.dart';
+import 'package:dvp_technical_test/features/app/bindings/home_binding.dart';
 import 'package:dvp_technical_test/features/app/custom/components/custom_invisible_app_bar.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/custom_text_field.dart';
-import 'package:dvp_technical_test/features/app/pages/address_list_page.dart';
+import 'package:dvp_technical_test/features/app/pages/address_list_page/address_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dvp_technical_test/injection_container.dart';
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
@@ -22,6 +23,11 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
   final gBloc = sl<GlobalSessionBloc>();
+  @override
+  void dispose() {
+    HomeBinding().dependencies();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +96,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                 CustomTextField(
                     readOnly: true,
                     labelText: l10n.addressWord,
+                    suffixIcon: const Icon(Icons.chevron_right, color: AppColors.blackSecond,),
                     validator: (_) {},
                     onChanged: (_) {}, 
                     onTap: () => nav.to(const AddressListPage())),
@@ -112,7 +119,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                       padding: const EdgeInsets.only(
                           left: 23, right: 23, bottom: 10),
                       disable: !bloc.validForm,
-                      text: l10n.save,
+                      text: l10n.saveWord,
                       onPressed: () {},
                     );
                   },

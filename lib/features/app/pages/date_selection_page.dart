@@ -157,7 +157,7 @@ class DateSelectionPageState extends BaseBlocState<DateSelectionPage,DateSelecti
       } else {
         show.scaffoldSnackbar(
           message: l10n.invalidDate,
-          labelAction: l10n.close
+          labelAction: l10n.closeWord
         );
       }
     },
@@ -206,7 +206,7 @@ class DateSelectionPageState extends BaseBlocState<DateSelectionPage,DateSelecti
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: ButtonWidget(
-                          text: l10n.save,
+                          text: l10n.saveWord,
                           onPressed: (){
                             if (!Validators.timeOfDay1IsAfter2(timeOfDayEndsAtAtChange,
                                                               timeOfDayStartAtChange)){
@@ -214,7 +214,7 @@ class DateSelectionPageState extends BaseBlocState<DateSelectionPage,DateSelecti
                                 Navigator.pop(context);
                                 show.scaffoldSnackbar(
                                   message: l10n.invalidTimeInterval,
-                                  labelAction: l10n.close
+                                  labelAction: l10n.closeWord
                                 );
                                 timeOfDayStartAtChange = TimeOfDay.now();
                                 timeOfDayEndsAtAtChange = TimeOfDay.now();
@@ -247,7 +247,7 @@ class DateSelectionPageState extends BaseBlocState<DateSelectionPage,DateSelecti
                               Navigator.pop(context);
                               show.scaffoldSnackbar(
                                 message: l10n.invalidTime,
-                                labelAction: l10n.close
+                                labelAction: l10n.closeWord
                               );
                             }
                           }
@@ -265,7 +265,7 @@ class DateSelectionPageState extends BaseBlocState<DateSelectionPage,DateSelecti
                               Navigator.pop(context);
                               show.scaffoldSnackbar(
                                 message: l10n.invalidTime,
-                                labelAction: l10n.close
+                                labelAction: l10n.closeWord
                               );
                             }
                           }

@@ -8,6 +8,7 @@ import 'package:dvp_technical_test/core/localization/app_localizations.dart';
 import 'package:dvp_technical_test/core/settings/app_routes.dart';
 import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/wrap_banner_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 
 class App extends StatelessWidget {
@@ -21,30 +22,34 @@ class App extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return WrapBanner(
-      label: Env.environment,
-      visible: Env.bannerEnvironment,
-      child: MaterialApp(
-          builder: (context, child) => MediaQuery(
-              data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
-              child: child!),
-          navigatorObservers: [NavigationHistoryObserver()],
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            DefaultCupertinoLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            DefaultWidgetsLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('es', 'US'),
-            Locale("en"),
-          ],
-          debugShowCheckedModeBanner: false,
-          home: const SplashPage(),
-          routes: AppRoutes.of(context),
-          theme: AppTheme.selected),
+    return ScreenUtilInit(
+      builder: (_, __) {
+        return WrapBanner(
+          label: Env.environment,
+          visible: Env.bannerEnvironment,
+          child: MaterialApp(
+              builder: (context, child) => MediaQuery(
+                  data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+                  child: child!),
+              navigatorObservers: [NavigationHistoryObserver()],
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                DefaultCupertinoLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+                DefaultWidgetsLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('es', 'US'),
+                Locale("en"),
+              ],
+              debugShowCheckedModeBanner: false,
+              home: const SplashPage(),
+              routes: AppRoutes.of(context),
+              theme: AppTheme.selected),
+        );
+      }
     );
   }
 }

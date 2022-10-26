@@ -1,3 +1,5 @@
+export 'package:dvp_technical_test/core/settings/app_settings.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dvp_technical_test/injection_container.dart';

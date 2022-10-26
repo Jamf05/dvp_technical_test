@@ -36,7 +36,6 @@ Future<void> init() async {
 
   sl.registerFactory(
       () => SplashBloc(checkAuthenticated: sl(), rejectUserConfirmation: sl()));
-  sl.registerFactory(() => HomeBloc(userUseCase: sl(), logOutUseCase: sl()));
   sl.registerFactory(() => DateSelectionBloc());
   sl.registerFactory(() =>
       LocationBloc(getListCountriesUsecase: sl(), getListCitiesUseCase: sl()));
