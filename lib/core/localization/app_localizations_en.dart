@@ -11,7 +11,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get version => 'Versión';
 
   @override
-  String get appCreatedAt => 'dvp_technical_test, 2020';
+  String get appCreatedAt => '2022';
 
   @override
   String get dateSelectionTitle => ', qué buena elección';
@@ -38,14 +38,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidTimeInterval => 'La hora final no puede ser menor que la inicial';
 
   @override
-  String get homeTitle => '¡Hola';
+  String get helloWord => 'Hola';
 
   @override
-  String get homeSubtitle => 'Bienvenido de vuelta, cuéntanos, ¿Qué vamos a hacer hoy?';
+  String get homeText1 => 'Bienvenido de vuelta, cuéntame un poco sobre ti';
 
   @override
   String get endsAt => 'Finaliza a las';
 
   @override
   String get startAt => 'Inicia a las';
+
+  @override
+  String get invalidFieldWord => 'Campo invalido';
+
+  @override
+  String get nameWord => 'Nombre';
+
+  @override
+  String get surnameWord => 'Apellido';
+
+  @override
+  String get birthdayWord => 'Fecha de nacimiento';
+
+  @override
+  String get addressWord => 'Dirección';
 }

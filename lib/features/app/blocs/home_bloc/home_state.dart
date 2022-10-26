@@ -4,12 +4,13 @@ abstract class HomeState extends Equatable {
 }
 
 class HomeInitial extends HomeState {
+  const HomeInitial();
   @override
   List<Object> get props => [];
 }
 
-class HomeServicesFetchedState extends HomeState {
-  const HomeServicesFetchedState();
+class UpdateButtonState extends HomeState {
+  const UpdateButtonState();
   @override
   List<Object> get props => [];
 

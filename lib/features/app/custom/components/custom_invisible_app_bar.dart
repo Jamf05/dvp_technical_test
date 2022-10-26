@@ -1,4 +1,3 @@
-
 import 'package:dvp_technical_test/core/extensions/drightness.dart';
 import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +15,7 @@ class CustomInvisibleAppBar extends StatelessWidget
     this.bottom,
     this.toolbarHeight,
     this.leading,
-  })
-      : preferredSize =
+  })  : preferredSize =
             _PreferredAppBarSize(toolbarHeight, bottom?.preferredSize.height),
         super(key: key);
   @override
@@ -25,12 +23,17 @@ class CustomInvisibleAppBar extends StatelessWidget
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.transparent,
-      leading: leading,
+      leading: leading ??
+          BackButton(
+              color: AppTheme.isDark
+                  ? AppColors.whiteFirst
+                  : AppColors.blackFirst),
       systemOverlayStyle: SystemUiOverlayStyle(
         // Status bar color
         statusBarColor: Colors.transparent,
         // Status bar brightness (optional)
-        statusBarIconBrightness: AppTheme.selected.brightness.inverted, // For Android (dark icons)
+        statusBarIconBrightness:
+            AppTheme.selected.brightness.inverted, // For Android (dark icons)
       ),
     );
   }

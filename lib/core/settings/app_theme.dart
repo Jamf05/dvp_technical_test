@@ -6,7 +6,7 @@ class AppTheme {
   factory AppTheme._() => _instance;
   factory AppTheme._fromJson(Map<String, dynamic> json) => AppTheme._();
 
-  static ThemeData selected = orangeLight;
+  static ThemeData selected = blueLight;
   static bool get isDark => selected.brightness == Brightness.dark;
 
   static final redLight = ThemeData(

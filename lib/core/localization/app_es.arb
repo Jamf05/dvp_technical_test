@@ -1,7 +1,7 @@
 {
   "aboutApp": "Acerca de",
   "version": "Versión",
-  "appCreatedAt": "dvp_technical_test, 2020",
+  "appCreatedAt": "2022",
   "dateSelectionTitle": ", qué buena elección",
   "dateSelectionSubtitle": "Ahora selecciona cuándo será tu reunión y filtraremos los chef disponibles.",
   "selectATime": "Selecciona un horario",
@@ -10,8 +10,13 @@
   "close": "Cerrar",
   "invalidTime": "No puede seleccionar una hora menor a la actual",
   "invalidTimeInterval": "La hora final no puede ser menor que la inicial",
-  "homeTitle": "¡Hola",
-  "homeSubtitle": "Bienvenido de vuelta, cuéntanos, ¿Qué vamos a hacer hoy?",
+  "helloWord": "Hola",
+  "homeText1": "Bienvenido de vuelta, cuéntame un poco sobre ti",
   "endsAt": "Finaliza a las",
-  "startAt": "Inicia a las"
+  "startAt": "Inicia a las",
+  "invalidFieldWord": "Campo invalido",
+  "nameWord": "Nombre",
+  "surnameWord": "Apellido",
+  "birthdayWord": "Fecha de nacimiento",
+  "addressWord": "Dirección"
 }

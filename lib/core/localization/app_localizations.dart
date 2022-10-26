@@ -108,7 +108,7 @@ abstract class AppLocalizations {
   /// No description provided for @appCreatedAt.
   ///
   /// In es, this message translates to:
-  /// **'dvp_technical_test, 2020'**
+  /// **'2022'**
   String get appCreatedAt;
 
   /// No description provided for @dateSelectionTitle.
@@ -159,17 +159,17 @@ abstract class AppLocalizations {
   /// **'La hora final no puede ser menor que la inicial'**
   String get invalidTimeInterval;
 
-  /// No description provided for @homeTitle.
+  /// No description provided for @helloWord.
   ///
   /// In es, this message translates to:
-  /// **'¡Hola'**
-  String get homeTitle;
+  /// **'Hola'**
+  String get helloWord;
 
-  /// No description provided for @homeSubtitle.
+  /// No description provided for @homeText1.
   ///
   /// In es, this message translates to:
-  /// **'Bienvenido de vuelta, cuéntanos, ¿Qué vamos a hacer hoy?'**
-  String get homeSubtitle;
+  /// **'Bienvenido de vuelta, cuéntame un poco sobre ti'**
+  String get homeText1;
 
   /// No description provided for @endsAt.
   ///
@@ -182,6 +182,36 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Inicia a las'**
   String get startAt;
+
+  /// No description provided for @invalidFieldWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Campo invalido'**
+  String get invalidFieldWord;
+
+  /// No description provided for @nameWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre'**
+  String get nameWord;
+
+  /// No description provided for @surnameWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Apellido'**
+  String get surnameWord;
+
+  /// No description provided for @birthdayWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de nacimiento'**
+  String get birthdayWord;
+
+  /// No description provided for @addressWord.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección'**
+  String get addressWord;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
