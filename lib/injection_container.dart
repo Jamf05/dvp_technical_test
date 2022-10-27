@@ -6,7 +6,6 @@ import 'package:dvp_technical_test/features/domain/usecases/register_user_usecas
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:dvp_technical_test/features/app/blocs/date_selection_bloc/date_selection_bloc.dart';
 import 'package:dvp_technical_test/features/app/blocs/splash_bloc/splash_bloc.dart';
 import 'package:dvp_technical_test/features/data/datasource/auth_local_data_source.dart';
 import 'package:dvp_technical_test/features/data/datasource/auth_remote_data_source.dart';
@@ -31,7 +30,6 @@ Future<void> init() async {
 
   sl.registerFactory(
       () => SplashBloc(checkAuthenticated: sl(), rejectUserConfirmation: sl()));
-  sl.registerFactory(() => DateSelectionBloc());
 
   /**
    * Use Cases

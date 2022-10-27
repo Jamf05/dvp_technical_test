@@ -47,7 +47,7 @@ class AddressDetailPage extends BaseStateless {
                 initialValue: address?.name,
                 labelText: l10n.addressWord,
                 validator: (_) => null,
-                onChanged: (String v) => null,
+                onChanged: (String v) {},
               ),
               const Spacer(),
               ButtonWidget(

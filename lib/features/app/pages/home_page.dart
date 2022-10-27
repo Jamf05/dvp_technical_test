@@ -141,7 +141,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                                 ? AppColors.whiteFirst
                                 : AppColors.blackSecond,
                           ),
-                          validator: (_) {},
+                          validator: (_) => null,
                           onChanged: (_) {},
                           onTap: () => nav.to(const AddressListPage())),
                     ],

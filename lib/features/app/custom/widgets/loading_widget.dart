@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:dvp_technical_test/core/widget/base_widget.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/circular_progress_indicator_widget.dart';
 

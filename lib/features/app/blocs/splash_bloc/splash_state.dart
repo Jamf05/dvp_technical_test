@@ -15,6 +15,6 @@ class RejectUserConfirmationState extends SplashState {}
 
 class FailureState extends SplashState {
   final Failure failure;
-  FailureState(this.failure);
+  const FailureState(this.failure);
 }
 

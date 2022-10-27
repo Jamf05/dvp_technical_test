@@ -3,7 +3,6 @@ import 'package:dvp_technical_test/features/app/bindings/home_binding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:dvp_technical_test/features/app/blocs/splash_bloc/splash_bloc.dart'; 
 import 'package:dvp_technical_test/features/app/pages/home_page.dart';
 import 'package:dvp_technical_test/features/domain/entities/enums/session_status.dart';

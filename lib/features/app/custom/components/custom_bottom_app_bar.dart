@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dvp_technical_test/core/env.dart';
 import 'package:dvp_technical_test/core/page/base_stateless.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 class CustomBottomAppBar extends BaseStateless {
   const CustomBottomAppBar({Key? key}) : super(key: key);
