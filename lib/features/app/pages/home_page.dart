@@ -163,7 +163,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                                 0.0,
                             padding: const EdgeInsets.only(
                                 left: 23, right: 23, bottom: 10),
-                            // disable: !bloc.validForm,
+                            disable: !bloc.validForm,
                             loading: bloc.sendingData,
                             text: l10n.saveWord,
                             onPressed: () => bloc.add(SetUserDataEvent(show, l10n)),

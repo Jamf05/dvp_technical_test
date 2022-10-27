@@ -5,7 +5,6 @@ import 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
 import 'package:dvp_technical_test/core/usecase/usecase.dart';
 import 'package:dvp_technical_test/core/utils/formaters.dart';
 import 'package:dvp_technical_test/core/validators/text_input.dart';
-import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
 import 'package:dvp_technical_test/features/domain/entities/user_entity.dart';
 import 'package:dvp_technical_test/features/domain/usecases/get_user_data_usecase.dart';
 import 'package:dvp_technical_test/features/domain/usecases/register_user_usecase.dart';
@@ -72,7 +71,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       _surname,
       _birthday,
     ]);
-    return form.isValid == true;
+    return form.isValid == true && user.address?.id != null;
   }
 
   void _mapUpdateButtonEventToState(
@@ -96,7 +95,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       name: _name.value,
       surname: _surname.value,
       birthday: _birthdayDate,
-      address: const AddressEntity(),
+      address: user.address
     );
     await Future.delayed(const Duration(seconds: 1));
     final response = await _setUserUseCase.call(newUser);

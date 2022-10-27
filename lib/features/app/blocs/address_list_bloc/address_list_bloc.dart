@@ -92,6 +92,7 @@ class AddressListBloc extends Bloc<AddressListEvent, AddressListState> {
       if (event.address.selected == true) {
         homeBloc.addressTextEditingCtrl.text = '';
         homeBloc.user = homeBloc.user.copyWith(address: const AddressEntity());
+        homeBloc.add(UpdateButtonEvent());
       }
       add(const AddressListUpdatePageEvent());
     });

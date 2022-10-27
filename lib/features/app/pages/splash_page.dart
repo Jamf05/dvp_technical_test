@@ -6,6 +6,7 @@ import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
 import 'package:dvp_technical_test/features/app/blocs/splash_bloc/splash_bloc.dart'; 
 import 'package:dvp_technical_test/features/app/pages/home_page.dart';
 import 'package:dvp_technical_test/features/domain/entities/enums/session_status.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashPage extends StatefulWidget {
   static const route = "/SplashPage";
@@ -45,9 +46,12 @@ class SplashPageState extends BaseBlocState<SplashPage, SplashBloc> {
                 redirect(SessionStatus.inactive);
                 break;
             }
-            return Container(
-              alignment: Alignment.center,
-              child: const FlutterLogo()
+            return Center(
+              child: Image.asset(
+                Assets.splash.splashIconPng.path,
+                width: size.width * 0.35,
+                alignment: Alignment.center,
+              ),
             );
           },
         ),
@@ -58,10 +62,6 @@ class SplashPageState extends BaseBlocState<SplashPage, SplashBloc> {
   Future<Timer> redirect(SessionStatus? session) async {
     return Timer(const Duration(milliseconds: 700), () {
       switch (session) {
-        case SessionStatus.enabledConfirmed:
-        case SessionStatus.waitingToCompleteRegistration:
-          nav.offAll(const HomePage(), binding: HomeBinding());
-          break;
         default:
           nav.offAll(const HomePage(), binding: HomeBinding());
       }
