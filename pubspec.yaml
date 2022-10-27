@@ -81,11 +81,25 @@ dev_dependencies:
   flutter_gen: ^5.0.3
   flutter_gen_runner: ^5.0.3
   dart_code_metrics: ^4.19.2
+  flutter_native_splash: ^2.2.12
+  flutter_launcher_icons: ^0.10.0
 
-# flutter_gen:
-#   output: .dart_tool/flutter_gen/gen_assets/ # Optional (default: lib/gen/)
-#   line_length: 80 # Optional (default: 80)
+flutter_icons:
+  image_path: "assets/icon.png"
+  adaptive_icon_background: "assets/background.png"
+  adaptive_icon_foreground: "assets/foreground.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
 
+flutter_native_splash:
+  image: 'assets/splash/splash_icon.png'
+  color: "#ffffff"
+  android_gravity: center
+  ios: true
+  image_ios: 'assets/splash/splash_icon.png'
+  android_disable_fullscreen: true
+  ios_content_mode: center
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

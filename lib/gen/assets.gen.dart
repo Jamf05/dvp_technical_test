@@ -132,14 +132,34 @@ class $AssetsIconsGen {
       ];
 }
 
+class $AssetsLogosGen {
+  const $AssetsLogosGen();
+
+  /// File path: assets/logos/loading_screen.svg
+  String get loadingScreen => 'assets/logos/loading_screen.svg';
+
+  /// File path: assets/logos/logo.svg
+  String get logo => 'assets/logos/logo.svg';
+
+  /// List of all assets
+  List<String> get values => [loadingScreen, logo];
+}
+
 class $AssetsSplashGen {
   const $AssetsSplashGen();
 
   /// File path: assets/splash/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/splash/splash.png');
 
+  /// File path: assets/splash/splash_icon.png
+  AssetGenImage get splashIconPng =>
+      const AssetGenImage('assets/splash/splash_icon.png');
+
+  /// File path: assets/splash/splash_icon.svg
+  String get splashIconSvg => 'assets/splash/splash_icon.svg';
+
   /// List of all assets
-  List<AssetGenImage> get values => [splash];
+  List<dynamic> get values => [splash, splashIconPng, splashIconSvg];
 }
 
 class Assets {
@@ -153,13 +173,11 @@ class Assets {
       AssetGenImage('assets/foreground.png');
   static const AssetGenImage icon = AssetGenImage('assets/icon.png');
   static const $AssetsIconsGen icons = $AssetsIconsGen();
-  static const String loadingScreen = 'assets/loading_screen.svg';
-  static const String logo = 'assets/logo.svg';
+  static const $AssetsLogosGen logos = $AssetsLogosGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
 
   /// List of all assets
-  List<dynamic> get values =>
-      [background, foreground, icon, loadingScreen, logo];
+  List<AssetGenImage> get values => [background, foreground, icon];
 }
 
 class AssetGenImage {
