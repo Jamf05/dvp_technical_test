@@ -1,8 +1,16 @@
 import 'package:dvp_technical_test/core/database/collections_name.dart';
+import 'package:dvp_technical_test/features/app/blocs/address_detail_bloc/address_detail_bloc.dart';
+import 'package:dvp_technical_test/features/data/datasource/address_local_data_source.dart';
+import 'package:dvp_technical_test/features/data/repositories/address_repository_impl.dart';
 import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
 import 'package:dvp_technical_test/features/domain/entities/user_entity.dart';
+import 'package:dvp_technical_test/features/domain/repositories/address_repository.dart';
+import 'package:dvp_technical_test/features/domain/usecases/get_list_address_usecase.dart';
 import 'package:dvp_technical_test/features/domain/usecases/get_user_data_usecase.dart';
 import 'package:dvp_technical_test/features/domain/usecases/register_user_usecase.dart';
+import 'package:dvp_technical_test/features/domain/usecases/remove_address_usecase.dart';
+import 'package:dvp_technical_test/features/domain/usecases/save_address_usecase.dart';
+import 'package:dvp_technical_test/features/domain/usecases/set_address_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,6 +38,8 @@ Future<void> init() async {
 
   sl.registerFactory(
       () => SplashBloc(checkAuthenticated: sl(), rejectUserConfirmation: sl()));
+  sl.registerFactory(() =>
+      AddressDetailBloc(saveAddressUseCase: sl(), setAddressUseCase: sl()));
 
   /**
    * Use Cases
@@ -40,6 +50,10 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCurrentUserUsecase(sl()));
   sl.registerLazySingleton(() => SetUserUseCase(sl()));
   sl.registerLazySingleton(() => GetUserDataUseCase(sl()));
+  sl.registerLazySingleton(() => GetListAddressUsecase(sl()));
+  sl.registerLazySingleton(() => SetAddressUseCase(sl()));
+  sl.registerLazySingleton(() => RemoveAddressUseCase(sl()));
+  sl.registerLazySingleton(() => SaveAddressUseCase(sl()));
 
   /** 
    * Repositories
@@ -50,6 +64,8 @@ Future<void> init() async {
       authRemoteDataSource: sl(), authLocalDataSource: sl()));
   sl.registerLazySingleton<LocationRepository>(
       () => LocationRepositoryImpl(remoteDataSource: sl()));
+  sl.registerLazySingleton<AddressRepository>(
+      () => AddressRepositoryImpl(localDataSource: sl()));
 
   /**
    * Data Sources
@@ -62,6 +78,8 @@ Future<void> init() async {
       () => AuthLocalDataSourceImpl(sharedPreferences: sl()));
   sl.registerLazySingleton<LocationRemoteDataSource>(
       () => LocationRemoteDataSourceImpl());
+  sl.registerLazySingleton<AddressLocalDataSource>(
+      () => AddressLocalDataSourceImpl(authLocalDataSource: sl()));
 
   /**
    * Externals

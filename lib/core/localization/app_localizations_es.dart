@@ -90,4 +90,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get addressListPageTitle => 'Mis direcciones';
+
+  @override
+  String get addressListPageEmpty1 => 'Aún no has añadido tu\ndirección.';
 }

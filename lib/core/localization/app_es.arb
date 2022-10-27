@@ -27,5 +27,6 @@
   "noWord": "No",
   "newAddressWord": "Nueva dirección",
   "homePageSuccessNotification1": "Tus datos se han actualizado correctamente",
-  "addressListPageTitle": "Mis direcciones"
+  "addressListPageTitle": "Mis direcciones",
+  "addressListPageEmpty1": "Aún no has añadido tu\ndirección."
 }

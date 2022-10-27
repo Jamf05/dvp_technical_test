@@ -266,6 +266,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Mis direcciones'**
   String get addressListPageTitle;
+
+  /// No description provided for @addressListPageEmpty1.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no has añadido tu\ndirección.'**
+  String get addressListPageEmpty1;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

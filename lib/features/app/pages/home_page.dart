@@ -1,3 +1,4 @@
+import 'package:dvp_technical_test/features/app/bindings/address_list_binding.dart';
 import 'package:dvp_technical_test/features/app/bindings/home_binding.dart';
 import 'package:dvp_technical_test/features/app/custom/components/custom_invisible_app_bar.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
@@ -29,7 +30,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
 
   @override
   void dispose() {
-    HomeBinding().dependencies();
+    HomeBinding().dispose();
     super.dispose();
   }
 
@@ -143,7 +144,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                           ),
                           validator: (_) => null,
                           onChanged: (_) {},
-                          onTap: () => nav.to(const AddressListPage())),
+                          onTap: () => nav.to(const AddressListPage(), binding: AddressListBinding())),
                     ],
                   ),
                 ),

@@ -7,11 +7,14 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
   final AddressEntity data;
   final void Function(AddressEntity address) onEdit;
   final void Function(AddressEntity address) onDelete;
+  final void Function(AddressEntity address) onSelecting;
   AddressItemWidget(
       {Key? key,
       required this.data,
       required this.onEdit,
-      required this.onDelete})
+      required this.onDelete,
+      required this.onSelecting,
+  })
       : super(key: key);
   final ValueNotifier<bool> showMoreOptions = ValueNotifier<bool>(false);
   @override
@@ -32,10 +35,7 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                         ? AppColors.whiteFirst
                         : AppColors.greyFirst,
               ),
-              onPressed: () async {
-                // await addressCtrl.principalChange(data?.id);
-                // if (!(widget.showMenu == true)) Get.back<bool>(result: true);
-              },
+              onPressed: () async => onSelecting.call(data),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8),

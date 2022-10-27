@@ -35,14 +35,20 @@ class AddressModel extends AddressEntity {
 
   factory AddressModel.fromQuery(Map<String, dynamic> query) {
     return AddressModel(
-        id: int.tryParse(query["id"]),
-        selected: query["selected"] == true,
+        id: int.tryParse(query["id"].toString()),
+        selected: query["selected"] == 1,
         name: query["name"]);
   }
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "selected": selected,
+        "name": name,
+      };
+
+  Map<String, dynamic> toQuery() => {
+        "id": id,
+        "selected": selected == true ? 1 : 0,
         "name": name,
       };
 }

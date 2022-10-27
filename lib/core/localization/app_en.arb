@@ -27,5 +27,6 @@
   "noWord": "No",
   "newAddressWord": "New address",
   "homePageSuccessNotification1": "Your data has been successfully updated",
-  "addressListPageTitle": "My addresses"
+  "addressListPageTitle": "My addresses",
+  "addressListPageEmpty1": "You have not yet added\nyour address."
 }

@@ -12,12 +12,11 @@ import 'package:path_provider/path_provider.dart';
 
 class SchemaDB {
   static const addressName = 'address';
-  static const addressTable =
-      ''' 
+  static const addressTable = ''' 
     CREATE TABLE IF NOT EXISTS address (
       id INTEGER PRIMARY KEY,
       name TEXT NOT NULL,
-      selected INTEGER DEFAULT 0
+      selected INTEGER DEFAULT 0,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   ''';
@@ -93,23 +92,22 @@ class DatabaseHelper {
     var res;
     log("INSERT OR REPLACE INTO $table ($colums) VALUES($singValues)",
         name: "rawInsertDB");
-    res = await db?.rawInsert(
-        '''
+    res = await db?.rawInsert('''
       INSERT OR REPLACE INTO $table ($colums) VALUES($singValues)
-      ''',
-        values);
+      ''', values);
     return res;
   }
 
-  Future selectQuery(String table, List<String> cols, String where,
-      List<dynamic> whereArgs) async {
+  Future selectQuery(String table,
+      {List<String>? cols,
+      String? where,
+      List<dynamic>? whereArgs,
+      String? orderBy}) async {
     Database? db = await database;
     log("${table.toString()}, ${cols.toString()}, ${where.toString()}",
         name: "selectDB");
     List<Map>? maps = await db?.query(table,
-        columns: cols,
-        where: where.isNotEmpty ? where : null,
-        whereArgs: whereArgs);
+        columns: cols, where: where, whereArgs: whereArgs, orderBy: orderBy);
     if (maps!.isNotEmpty) {
       return maps;
     }

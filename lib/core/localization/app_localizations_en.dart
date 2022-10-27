@@ -90,4 +90,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addressListPageTitle => 'My addresses';
+
+  @override
+  String get addressListPageEmpty1 => 'You have not yet added\nyour address.';
 }

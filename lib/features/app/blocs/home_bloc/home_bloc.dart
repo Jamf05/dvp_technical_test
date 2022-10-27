@@ -119,7 +119,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       name = name.copyWith(user.name ?? '');
       surname = surname.copyWith(user.surname ?? '');
       birthdayDate = user.birthday;
-      name = name.copyWith(user.name ?? '');
+      addressTextEditingCtrl.text = user.address?.name ?? '';
     });
     isLoadingPage = false;
     add(const HomeLoadingEvent());

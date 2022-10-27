@@ -12,6 +12,23 @@ class AddressEntity extends Equatable {
   @HiveField(2)
   final String? name;
   const AddressEntity({this.id, this.selected = false, this.name = ""});
+
+  AddressEntity copyWith({
+    int? id,
+    bool? selected,
+    String? name,
+  }) {
+    return AddressEntity(
+      id: id ?? this.id,
+      selected: selected ?? this.selected,
+      name: name ?? this.name,
+    );
+  }
+  
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [
+        id,
+        selected,
+        name,
+      ];
 }
