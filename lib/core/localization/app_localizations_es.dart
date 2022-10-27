@@ -38,7 +38,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get invalidTimeInterval => 'La hora final no puede ser menor que la inicial';
 
   @override
-  String get helloWord => 'Hola';
+  String get helloWord => '¡Hola!';
 
   @override
   String get homeText1 => 'Bienvenido de vuelta, cuéntame un poco sobre ti';
@@ -84,4 +84,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get newAddressWord => 'Nueva dirección';
+
+  @override
+  String get homePageSuccessNotification1 => 'Tus datos se han actualizado correctamente';
+
+  @override
+  String get addressListPageTitle => 'Mis direcciones';
 }

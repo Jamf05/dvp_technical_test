@@ -13,13 +13,29 @@ class UpdateButtonState extends HomeState {
   const UpdateButtonState();
   @override
   List<Object> get props => [];
-
 }
 
-class HomeServicesErrorState extends HomeState {
-  final String error;
-  const HomeServicesErrorState({required this.error});
+class HomeFailureState extends HomeState {
+  final Failure failure;
+  const HomeFailureState(this.failure);
   @override
-  List<Object> get props => [error];
+  List<Object> get props => [failure];
+}
 
+class SetUserDataState extends HomeState {
+  const SetUserDataState();
+  @override
+  List<Object?> get props => [];
+}
+
+class GetUserDataState extends HomeState {
+  const GetUserDataState();
+  @override
+  List<Object?> get props => [];
+}
+
+class HomeLoadingState extends HomeState {
+  const HomeLoadingState();
+  @override
+  List<Object?> get props => [];
 }

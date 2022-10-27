@@ -26,7 +26,7 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
             IconButton(
               icon: SvgPicture.asset(
                 Assets.icons.mapPin,
-                color: (data.principal == true)
+                color: (data.selected == true)
                     ? AppSettings.colors.primaryColor
                     : isDarkTheme
                         ? AppColors.whiteFirst
@@ -46,7 +46,7 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                   SizedBox(
                     width: size.width * 0.55,
                     child:
-                        Text(data.name.capitalize, style: AppFonts.promptL14),
+                        Text(data.name?.capitalize ?? '', style: AppFonts.promptL14),
                   )
                 ],
               ),

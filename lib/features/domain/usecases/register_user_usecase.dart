@@ -4,10 +4,10 @@ import 'package:dvp_technical_test/core/usecase/usecase.dart';
 import 'package:dvp_technical_test/features/domain/entities/user_entity.dart';
 import 'package:dvp_technical_test/features/domain/repositories/auth_repository.dart';
 
-class RegisterUserUseCase implements UseCase<UserEntity?, Map<String, dynamic>> {
+class SetUserUseCase implements UseCase<bool?, UserEntity?> {
   final AuthRepository authRepository;
 
-  RegisterUserUseCase(this.authRepository);
+  SetUserUseCase(this.authRepository);
   /// params:
   /// ```dart
   /// {
@@ -18,14 +18,14 @@ class RegisterUserUseCase implements UseCase<UserEntity?, Map<String, dynamic>> 
   ///   "country": (String),
   ///   "city": (String),
   ///   "isChef": true,
-  ///   "birthDay": (String),
+  ///   "birthday": (String),
   ///   "img": (String),
   ///   "userSub": (String),
   ///   "sessionStatus": (int)
   /// }
   /// ```
   @override
-  Future<Either<Failure, UserEntity?>> call(Map<String, dynamic> params) {
-    return authRepository.registerUser(params);
+  Future<Either<Failure, bool?>> call(UserEntity? user) {
+    return authRepository.setCurrentUser(user);
   }
 }

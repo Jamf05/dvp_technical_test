@@ -10,7 +10,7 @@
   "closeWord": "Cerrar",
   "invalidTime": "No puede seleccionar una hora menor a la actual",
   "invalidTimeInterval": "La hora final no puede ser menor que la inicial",
-  "helloWord": "Hola",
+  "helloWord": "¡Hola!",
   "homeText1": "Bienvenido de vuelta, cuéntame un poco sobre ti",
   "endsAt": "Finaliza a las",
   "startAt": "Inicia a las",
@@ -25,5 +25,7 @@
   "confirmDeleteAddressPhrase": "¿Estas seguro?",
   "yesWord": "Si",
   "noWord": "No",
-  "newAddressWord": "Nueva dirección"
+  "newAddressWord": "Nueva dirección",
+  "homePageSuccessNotification1": "Tus datos se han actualizado correctamente",
+  "addressListPageTitle": "Mis direcciones"
 }

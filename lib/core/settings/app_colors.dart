@@ -4,32 +4,17 @@ class AppColors {
 
   Color _primaryColor = AppTheme.selected.value.primaryColor;
   Color get primaryColor => _instance._primaryColor;
-
-  // Color _secondaryColor = const Color(0xffE5D095);
-  // Color get secondaryColor => _instance._secondaryColor;
-
-  // Color _tertiaryColor = const Color(0xffE5D095);
-  // Color get tertiaryColor => _instance._tertiaryColor;
-
   static final AppColors _instance = AppColors._internal();
   AppColors._internal();
   factory AppColors._({
     @required Color? primaryColor,
-    // @required Color? secondaryColor,
-    // @required Color? tertiaryColor,
   }) {
     _instance._primaryColor = primaryColor ?? _instance._primaryColor;
-    // _instance._secondaryColor = secondaryColor ?? _instance._secondaryColor;
-    // _instance._tertiaryColor = tertiaryColor ?? _instance._tertiaryColor;
     return _instance;
   }
 
   factory AppColors._fromJson(Map<String, dynamic> json) => AppColors._(
     primaryColor: json["color"] != null ? HexadecimalColor.from(json["color"]) : _instance._primaryColor,
-    // secondaryColor: json["color"] != null ? HexadecimalColor.fromHexadecimal(json["color"]) : _instance._secondaryColor,
-    // secondaryColor: _instance._secondaryColor,
-    // tertiaryColor: json["color"] != null ? HexadecimalColor.fromHexadecimal(json["color"]) : _instance._tertiaryColor,
-    // tertiaryColor: _instance._tertiaryColor,
   );
 
   /// Color(0xffFF1720)

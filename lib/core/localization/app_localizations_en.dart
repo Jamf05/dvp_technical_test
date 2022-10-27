@@ -5,7 +5,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get aboutApp => 'Acerca de';
+  String get aboutApp => 'About';
 
   @override
   String get version => 'Versión';
@@ -23,13 +23,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectATime => 'Selecciona un horario';
 
   @override
-  String get saveWord => 'Guardar';
+  String get saveWord => 'Save';
 
   @override
   String get invalidDate => 'No puede seleccionar una fecha menor a la actual';
 
   @override
-  String get closeWord => 'Cerrar';
+  String get closeWord => 'Close';
 
   @override
   String get invalidTime => 'No puede seleccionar una hora menor a la actual';
@@ -38,10 +38,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidTimeInterval => 'La hora final no puede ser menor que la inicial';
 
   @override
-  String get helloWord => 'Hola';
+  String get helloWord => 'Hello!';
 
   @override
-  String get homeText1 => 'Bienvenido de vuelta, cuéntame un poco sobre ti';
+  String get homeText1 => 'Welcome back, tell me a little about yourself';
 
   @override
   String get endsAt => 'Finaliza a las';
@@ -50,38 +50,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startAt => 'Inicia a las';
 
   @override
-  String get invalidFieldWord => 'Campo invalido';
+  String get invalidFieldWord => 'Invalid field';
 
   @override
-  String get nameWord => 'Nombre';
+  String get nameWord => 'Name';
 
   @override
-  String get surnameWord => 'Apellido';
+  String get surnameWord => 'Surname';
 
   @override
-  String get birthdayWord => 'Fecha de nacimiento';
+  String get birthdayWord => 'Birthday';
 
   @override
-  String get addressWord => 'Dirección';
+  String get addressWord => 'Address';
 
   @override
-  String get createWord => 'Crear';
+  String get createWord => 'Create';
 
   @override
-  String get editWord => 'Editar';
+  String get editWord => 'Edit';
 
   @override
-  String get deleteWord => 'Eliminar';
+  String get deleteWord => 'Delete';
 
   @override
-  String get confirmDeleteAddressPhrase => '¿Estas seguro?';
+  String get confirmDeleteAddressPhrase => 'Are you sure?';
 
   @override
-  String get yesWord => 'Si';
+  String get yesWord => 'Yes';
 
   @override
   String get noWord => 'No';
 
   @override
-  String get newAddressWord => 'Nueva dirección';
+  String get newAddressWord => 'New address';
+
+  @override
+  String get homePageSuccessNotification1 => 'Your data has been successfully updated';
+
+  @override
+  String get addressListPageTitle => 'My addresses';
 }

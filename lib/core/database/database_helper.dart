@@ -2,31 +2,31 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:dvp_technical_test/core/env.dart';
 import 'package:dvp_technical_test/core/utils/database_utils.dart';
 import 'package:dvp_technical_test/core/utils/update_application_utils.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
 class SchemaDB {
-  static const userTableName = "user";
-  static const userTable = '''
-      CREATE TABLE IF NOT EXISTS user (
-        id_cognito TEXT PRIMARY KEY,
-        user_name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        birthdate TEXT NOT NULL,
-        session_status INTEGE NOT NULL
-      );
-    ''';
+  static const addressName = 'address';
+  static const addressTable =
+      ''' 
+    CREATE TABLE IF NOT EXISTS address (
+      id INTEGER PRIMARY KEY,
+      name TEXT NOT NULL,
+      selected INTEGER DEFAULT 0
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  ''';
   static final tables = {
-    userTableName: userTable,
+    addressName: addressTable,
   };
 
   static final toMigrate = [
-    userTableName,
+    addressName,
   ];
 
   static final toRebuild = [];
@@ -39,7 +39,6 @@ class SchemaDB {
 
 class DatabaseHelper {
   static const _databaseName = "dvp_technical_test.db";
-  static const _databaseVersion = 1;
 
   DatabaseHelper._privateConstructor();
 
@@ -55,8 +54,7 @@ class DatabaseHelper {
   Future<Database>? _initDatabase() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, _databaseName);
-    final appVersion = await _getAppVersion();
-    final databaseVersion = UpdateApplicationUtils.appVersionToInt(appVersion);
+    final databaseVersion = UpdateApplicationUtils.appVersionToInt(Env.version);
     Database database = await openDatabase(path,
         version: databaseVersion,
         onCreate: _onCreate,
@@ -95,9 +93,11 @@ class DatabaseHelper {
     var res;
     log("INSERT OR REPLACE INTO $table ($colums) VALUES($singValues)",
         name: "rawInsertDB");
-    res = await db?.rawInsert('''
+    res = await db?.rawInsert(
+        '''
       INSERT OR REPLACE INTO $table ($colums) VALUES($singValues)
-      ''', values);
+      ''',
+        values);
     return res;
   }
 
@@ -138,12 +138,6 @@ class DatabaseHelper {
     Database? db_ = db ?? await database;
     await db_?.execute(sql);
     log(sql, name: "deleteDB");
-  }
-
-  Future<String> _getAppVersion() async {
-    PackageInfo info = await PackageInfo.fromPlatform();
-    log(info.version, name: "PVersion");
-    return info.version;
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
@@ -229,7 +223,8 @@ class DatabaseHelper {
           log("MIGRATION FAILED", name: "DB");
           return false;
         }
-        if (!DatabaseUtils.schemaCompare(r.first["sql"].toString(), SchemaDB.tables[t])) {
+        if (!DatabaseUtils.schemaCompare(
+            r.first["sql"].toString(), SchemaDB.tables[t])) {
           log("MIGRATION FAILED", name: "DB");
           return false;
         }

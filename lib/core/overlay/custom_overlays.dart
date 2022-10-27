@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:dvp_technical_test/core/failures/failure.dart';
 import 'package:dvp_technical_test/core/settings/app_settings.dart';
@@ -448,6 +449,17 @@ class Show {
         ));
   }
 
+  void successNotification(String message, {String? subtitle}) {
+    return notification(message,
+        subtitle: subtitle,
+        icon: SvgPicture.asset(
+          Assets.icons.loadedIcon,
+          width: 20,
+          height: 20,
+          color: AppColors.greenAccentFirst,
+        ));
+  }
+
   Future<TimeOfDay?> timePicker() {
     Future<TimeOfDay?> selectedTime = showTimePicker(
       context: _context,
@@ -662,7 +674,7 @@ class _OverlayWidgetState extends State<_OverlayWidget>
                                           horizontal: 15.0, vertical: 15.0),
                                   decoration: BoxDecoration(
                                       border:
-                                          Border.all(color: Colors.transparent),
+                                          Border.all(color: const Color(0xFFDBDBDB)),
                                       borderRadius: BorderRadius.circular(16),
                                       color: widget.background ??
                                           Colors.transparent),

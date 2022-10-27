@@ -34,7 +34,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     emit(response.fold(
       (l) => FailureState(l),
       (r) {
-      _sessionStatus = r?.status;
       final gBloc = sl<GlobalSessionBloc>();
       gBloc.user = r;
       return CheckAuthenticatedState();

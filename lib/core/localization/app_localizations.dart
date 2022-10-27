@@ -162,7 +162,7 @@ abstract class AppLocalizations {
   /// No description provided for @helloWord.
   ///
   /// In es, this message translates to:
-  /// **'Hola'**
+  /// **'¡Hola!'**
   String get helloWord;
 
   /// No description provided for @homeText1.
@@ -254,6 +254,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Nueva dirección'**
   String get newAddressWord;
+
+  /// No description provided for @homePageSuccessNotification1.
+  ///
+  /// In es, this message translates to:
+  /// **'Tus datos se han actualizado correctamente'**
+  String get homePageSuccessNotification1;
+
+  /// No description provided for @addressListPageTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Mis direcciones'**
+  String get addressListPageTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

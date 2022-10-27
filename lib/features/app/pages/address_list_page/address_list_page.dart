@@ -5,10 +5,24 @@ import 'package:dvp_technical_test/features/app/pages/address_detail_page/addres
 import 'package:dvp_technical_test/features/app/pages/address_list_page/widgets/address_item_widget.dart';
 import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AddressListPage extends BaseStateless {
   static const route = "/AddressListPage";
   const AddressListPage({Key? key}) : super(key: key);
+
+  List<Widget> get actions => [
+        IconButton(
+            onPressed: () =>
+                AppTheme.selected.value = AppTheme.reverseBlueTheme,
+            icon: Icon(
+                isDarkTheme
+                    ? Icons.wb_sunny_outlined
+                    : MdiIcons.weatherNightPartlyCloudy,
+                color:
+                    isDarkTheme ? AppColors.whiteFirst : AppColors.blackFirst))
+      ];
+
   @override
   Widget build(BuildContext context) {
     BaseStateless.init(context);
@@ -17,7 +31,7 @@ class AddressListPage extends BaseStateless {
           id: 1,
           name:
               "Commodo quis nisi dolor id mollit et tempor sunt eiusmod proident.",
-          principal: true),
+          selected: true),
       AddressEntity(
         id: 2,
         name: "Ex sunt eu ullamco ex ut aliqua id.",
@@ -27,7 +41,9 @@ class AddressListPage extends BaseStateless {
           name: "Voluptate cupidatat cupidatat pariatur do et esse sunt."),
     ];
     return Scaffold(
-        appBar: CustomInvisibleAppBar(),
+        appBar: CustomInvisibleAppBar(
+          actions: actions,
+        ),
         bottomNavigationBar: ButtonWidget(
             padding:
                 const EdgeInsets.only(bottom: 10, left: 23, right: 23, top: 10),
@@ -43,7 +59,7 @@ class AddressListPage extends BaseStateless {
                 height: 50.0,
               ),
               Text(
-                'Mis direcciones',
+                l10n.addressListPageTitle,
                 style: AppFonts.promptR24,
                 textAlign: TextAlign.center,
               ),

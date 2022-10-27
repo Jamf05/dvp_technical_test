@@ -6,7 +6,7 @@ class HomeBinding extends Bindings {
   @override
   void dependencies() {
     sl.registerLazySingleton(
-        () => HomeBloc(userUseCase: sl(), logOutUseCase: sl()));
+        () => HomeBloc(getUserUseCase: sl(), setUserUseCase: sl()));
   }
 
   @override
