@@ -6,7 +6,6 @@ import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
 import 'package:dvp_technical_test/features/app/blocs/splash_bloc/splash_bloc.dart'; 
 import 'package:dvp_technical_test/features/app/pages/home_page.dart';
 import 'package:dvp_technical_test/features/domain/entities/enums/session_status.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashPage extends StatefulWidget {
   static const route = "/SplashPage";
