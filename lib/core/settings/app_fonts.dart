@@ -60,6 +60,6 @@ class AppFonts {
   static final TextStyle promptL12 = GoogleFonts.prompt(fontSize: 12, fontWeight: FontWeight.w300);
   static final TextStyle promptL11 = GoogleFonts.prompt(fontSize: 11, fontWeight: FontWeight.w300);
 
-  static final TextStyle inputTextStyle = GoogleFonts.prompt(fontSize: 14, fontWeight: FontWeight.w300, color: AppColors.blackFirst);
-  static final TextStyle hintTextStyle = GoogleFonts.prompt(fontSize: 14, fontWeight: FontWeight.w300, color: AppColors.greyThird);
+  static final TextStyle inputTextStyle = GoogleFonts.prompt(fontSize: 14, fontWeight: FontWeight.w300);
+  static final TextStyle hintTextStyle = GoogleFonts.prompt(fontSize: 14, fontWeight: FontWeight.w300);
 }

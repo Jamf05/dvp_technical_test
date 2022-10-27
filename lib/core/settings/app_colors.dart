@@ -2,7 +2,7 @@ part of 'app_settings.dart';
 
 class AppColors {
 
-  Color _primaryColor = AppTheme.selected.primaryColor;
+  Color _primaryColor = AppTheme.selected.value.primaryColor;
   Color get primaryColor => _instance._primaryColor;
 
   // Color _secondaryColor = const Color(0xffE5D095);

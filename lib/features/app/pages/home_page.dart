@@ -28,12 +28,14 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
 
   List<Widget> get actions => [
         IconButton(
-            onPressed: () {},
+            onPressed: () =>
+                AppTheme.selected.value = AppTheme.reverseBlueTheme,
             icon: Icon(
-                AppTheme.isDark
+                isDarkTheme
                     ? Icons.wb_sunny_outlined
                     : MdiIcons.weatherNightPartlyCloudy,
-                color: Colors.black))
+                color:
+                    isDarkTheme ? AppColors.whiteFirst : AppColors.blackFirst))
       ];
 
   @override
@@ -110,9 +112,11 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                 CustomTextField(
                     readOnly: true,
                     labelText: l10n.addressWord,
-                    suffixIcon: const Icon(
+                    suffixIcon: Icon(
                       Icons.chevron_right,
-                      color: AppColors.blackSecond,
+                      color: isDarkTheme
+                          ? AppColors.whiteFirst
+                          : AppColors.blackSecond,
                     ),
                     validator: (_) {},
                     onChanged: (_) {},

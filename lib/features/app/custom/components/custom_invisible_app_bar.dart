@@ -27,17 +27,22 @@ class CustomInvisibleAppBar extends StatelessWidget
       backgroundColor: Colors.transparent,
       bottom: bottom,
       actions: actions,
-      leading: leading ??
-          BackButton(
-              color: AppTheme.isDark
-                  ? AppColors.whiteFirst
-                  : AppColors.blackFirst),
+      leading: ValueListenableBuilder<ThemeData>(
+        valueListenable: AppTheme.selected,
+        builder: (context, value, child) {
+          return leading ??
+              BackButton(
+                  color: value.brightness == Brightness.dark
+                      ? AppColors.whiteFirst
+                      : AppColors.blackFirst);
+        }
+      ),
       systemOverlayStyle: SystemUiOverlayStyle(
         // Status bar color
         statusBarColor: Colors.transparent,
         // Status bar brightness (optional)
         statusBarIconBrightness:
-            AppTheme.selected.brightness.inverted, // For Android (dark icons)
+            AppTheme.selected.value.brightness.inverted, // For Android (dark icons)
       ),
     );
   }

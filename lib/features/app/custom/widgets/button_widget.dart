@@ -47,7 +47,7 @@ class ButtonWidget extends StatelessWidget {
           child: TextButton(
             onPressed: disable == true || loading == true ? () {} : onPressed,
             style: TextButton.styleFrom(
-                foregroundColor: AppTheme.isDark
+                foregroundColor: Theme.of(context).brightness == Brightness.dark
                     ? AppColors.whiteFirst
                     : AppColors.blackFirst,
                 padding: EdgeInsets.zero,

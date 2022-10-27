@@ -6,8 +6,12 @@ class AppTheme {
   factory AppTheme._() => _instance;
   factory AppTheme._fromJson(Map<String, dynamic> json) => AppTheme._();
 
-  static ThemeData selected = blueLight;
-  static bool get isDark => selected.brightness == Brightness.dark;
+  static ValueNotifier<ThemeData> selected = ValueNotifier(blueLight);
+  static get _isDark => selected.value.brightness == Brightness.dark;
+
+  static ThemeData get reverseRedTheme {
+    return _isDark ? AppTheme.redLight : AppTheme.redDark;
+  }
 
   static final redLight = ThemeData(
     brightness: Brightness.light,
@@ -29,6 +33,10 @@ class AppTheme {
       ),
     ),
   );
+
+  static ThemeData get reverseGreenTheme =>
+      _isDark ? AppTheme.greenLight : AppTheme.greenDark;
+
   static final greenLight = ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.green,
@@ -49,6 +57,10 @@ class AppTheme {
       ),
     ),
   );
+
+  static ThemeData get reverseBlueTheme =>
+      _isDark ? AppTheme.blueLight : AppTheme.blueDark;
+
   static final blueLight = ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.blue,
@@ -69,6 +81,10 @@ class AppTheme {
       ),
     ),
   );
+
+  static ThemeData get reverseOrangeTheme =>
+      _isDark ? AppTheme.orangeLight : AppTheme.orangeDark;
+
   static final orangeLight = ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.orange,

@@ -27,8 +27,10 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
               icon: SvgPicture.asset(
                 Assets.icons.mapPin,
                 color: (data.principal == true)
-                    ? AppTheme.selected.primaryColor
-                    : AppColors.greyFirst,
+                    ? AppSettings.colors.primaryColor
+                    : isDarkTheme
+                        ? AppColors.whiteFirst
+                        : AppColors.greyFirst,
               ),
               onPressed: () async {
                 // await addressCtrl.principalChange(data?.id);
@@ -43,13 +45,8 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                 children: <Widget>[
                   SizedBox(
                     width: size.width * 0.55,
-                    child: Text(
-                      data.name.capitalize,
-                      style: AppFonts.promptL14.copyWith(
-                          color: data.principal == true
-                              ? AppColors.blackFirst
-                              : AppColors.greyFirst),
-                    ),
+                    child:
+                        Text(data.name.capitalize, style: AppFonts.promptL14),
                   )
                 ],
               ),
@@ -62,17 +59,19 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                     return Row(
                       children: [
                         InkWell(
-                            child: SvgPicture.asset(
-                              Assets.icons.editIcon,
-                              color: AppColors.greyFirst,
-                            ),
+                            child: SvgPicture.asset(Assets.icons.editIcon,
+                                color: isDarkTheme
+                                    ? AppColors.whiteFirst
+                                    : AppColors.greyFirst),
                             onTap: () => onEdit.call(data)),
-                        const SizedBox(width: 10,),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         InkWell(
-                            child: SvgPicture.asset(
-                              Assets.icons.deleteIcon,
-                              color: AppColors.greyFirst,
-                            ),
+                            child: SvgPicture.asset(Assets.icons.deleteIcon,
+                                color: isDarkTheme
+                                    ? AppColors.whiteFirst
+                                    : AppColors.greyFirst),
                             onTap: () => onDelete.call(data)),
                       ],
                     );
@@ -82,7 +81,9 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                         width: 30,
                         child: SvgPicture.asset(
                           Assets.icons.dotsVerticalIcon,
-                          color: AppColors.blackFirst,
+                          color: isDarkTheme
+                              ? AppColors.whiteFirst
+                              : AppColors.blackFirst,
                         ),
                       ),
                       onTap: () => showMoreOptions.value = true);

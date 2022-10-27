@@ -1,4 +1,3 @@
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:dvp_technical_test/core/widget/base_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -66,9 +65,15 @@ class CustomTextField extends StatelessWidget with BaseWidget {
         prefixIcon: prefixIcon,
         contentPadding:
             const EdgeInsets.only(right: 17, left: 17, top: 2, bottom: 2),
-        border: AppStyles.borderInput,
-        enabledBorder: AppStyles.borderInput,
-        focusedBorder: AppStyles.borderInput,
+        border: Theme.of(context).brightness == Brightness.dark
+            ? AppStyles.borderInputDark
+            : AppStyles.borderInputLight,
+        enabledBorder: Theme.of(context).brightness == Brightness.dark
+            ? AppStyles.borderInputDark
+            : AppStyles.borderInputLight,
+        focusedBorder: Theme.of(context).brightness == Brightness.dark
+            ? AppStyles.borderInputDark
+            : AppStyles.borderInputLight,
         hintStyle: AppFonts.hintTextStyle,
         hintText: hintText,
         labelText: labelText,

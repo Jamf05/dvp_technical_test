@@ -7,9 +7,19 @@ class AppStyles {
   factory AppStyles._() => _instance;
   factory AppStyles._fromJson(Map<String, dynamic> json) => AppStyles._();
 
-  static const borderInput = OutlineInputBorder(
+  static const borderInputLight = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(5)),
-      borderSide: BorderSide(color: AppColors.blackSecond, width: 1.0));
+      borderSide: BorderSide(
+        color: AppColors.blackSecond,
+        width: 1.0
+  ));
+
+  static const borderInputDark = OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(5)),
+      borderSide: BorderSide(
+        color: AppColors.whiteFirst,
+        width: 1.0
+  ));
 
   static const borderRadius = BorderRadius.all(Radius.circular(12));
 
