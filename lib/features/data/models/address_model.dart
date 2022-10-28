@@ -28,7 +28,7 @@ class AddressModel extends AddressEntity {
   }
 
   factory AddressModel.fromJson(Map<String, dynamic> json) => AddressModel(
-        id: int.tryParse(json["id"]),
+        id: int.tryParse(json["id"].toString()),
         selected: json["selected"] == true,
         name: json["name"],
       );
