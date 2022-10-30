@@ -1,6 +1,6 @@
 # DVP Technical Test App [![Codemagic build status](https://api.codemagic.io/apps/635e9d666520fbed792c9a3a/635e9d666520fbed792c9a39/status_badge.svg)](https://codemagic.io/apps/635e9d666520fbed792c9a3a/635e9d666520fbed792c9a39/latest_build)
 
-![Twitter Follow](https://img.shields.io/twitter/follow/MogotocoroJorge?style=social)
+[![Twitter Follow](https://img.shields.io/twitter/follow/MogotocoroJorge?style=social)](https://twitter.com/MogotocoroJorge)
 
 A simple Flutter application with a form to save your personal data and a list of your addresses in the local data of the device.
 
@@ -251,4 +251,4 @@ This project follows the guidelines of clean architecture.
 
 ## 👨‍💻 Author(s)
 
-**Jorge A. Mogotocoro F.** ![Twitter Follow](https://img.shields.io/twitter/follow/MogotocoroJorge?style=social)
+**Jorge A. Mogotocoro F.** [![Twitter Follow](https://img.shields.io/twitter/follow/MogotocoroJorge?style=social)](https://twitter.com/MogotocoroJorge)
