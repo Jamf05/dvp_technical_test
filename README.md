@@ -4,7 +4,7 @@
 
 A simple Flutter application with a form to save your personal data and a list of your addresses in the local data of the device.
 
-To download this app, click here to see the [codemagic](https://codemagic.io/app/635e9d666520fbed792c9a3a/build/635e9ecc6520fb6c1b6738a0) builds. You can choose to install the apk or the ipa(ios).
+To download this app, click here to see the [codemagic](https://codemagic.io/app/635e9d666520fbed792c9a3a/build/636003b0988981d94219a8b4) builds. You can choose to install the apk or the ipa(ios).
 
 | Please star ⭐ the repo if you like what you see 😉.
 
