@@ -64,11 +64,11 @@ class UpdateApplicationUtils {
       List<String> split2 = split1[0].split(".");
       split2.removeLast();
       if (split2.isNotEmpty) {
-        String _v = '';
+        String v_ = '';
         for (var e in split2) {
-          _v += e;
+          v_ += e;
         }
-        return (int.tryParse(_v) ?? 0) * 10;
+        return (int.tryParse(v_) ?? 0) * 10;
       }
     }
     return 1;

@@ -1,13 +1,9 @@
 import 'package:dvp_technical_test/core/database/database_helper.dart';
 import 'package:dvp_technical_test/core/env.dart';
-import 'package:dvp_technical_test/core/failures/exception.dart';
 import 'package:dvp_technical_test/features/data/datasource/address_local_data_source.dart';
-import 'package:dvp_technical_test/features/data/datasource/auth_local_data_source.dart';
 import 'package:dvp_technical_test/features/data/models/address_model.dart';
-import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
 import 'package:dvp_technical_test/gen/assets.gen.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -15,8 +11,6 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 void main() {
   // Init ffi loader if needed.
   late DatabaseHelper databaseHelper;
-  late SharedPreferences sharedPreferences;
-  late AuthLocalDataSourceImpl authLocalDataSource;
   late AddressLocalDataSourceImpl addressLocalDataSource;
 
   const tAddressModel = AddressModel(
@@ -25,22 +19,14 @@ void main() {
     selected: true,
   );
 
-  const tAddressEntity = AddressEntity(
-    id: 1,
-    name: "Mollit tempor id duis officia cillum velit excepteur pariatur.",
-    selected: true,
-  );
-
   setUp(() async {
-    await Env.load(fileName: Assets.env.env);
     // Initialize FFI
     sqfliteFfiInit();
     // Change the default factory
     databaseFactory = databaseFactoryFfi;
-    sharedPreferences = await SharedPreferences.getInstance();
+    await Env.load(fileName: Assets.env.env);
     DatabaseHelper.deleteDatabase();
     databaseHelper = await DatabaseHelper.init();
-    authLocalDataSource = AuthLocalDataSourceImpl(sharedPreferences: sharedPreferences);
     addressLocalDataSource = AddressLocalDataSourceImpl(databaseHelper: databaseHelper);
   });
 
