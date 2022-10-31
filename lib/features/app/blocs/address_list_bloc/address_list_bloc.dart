@@ -75,7 +75,9 @@ class AddressListBloc extends Bloc<AddressListEvent, AddressListState> {
       final homeBloc = sl<HomeBloc>();
       homeBloc.addressTextEditingCtrl.text = event.address.name ?? '';
       homeBloc.user = homeBloc.user.copyWith(address: event.address);
+      homeBloc.add(UpdateButtonEvent());
       add(const AddressListUpdatePageEvent());
+      event.show.successNotification(event.l10n.homePageSuccessNotification1);
     });
     _sendingData = false;
     add(const AddressListUpdateButtonEvent());
@@ -95,6 +97,7 @@ class AddressListBloc extends Bloc<AddressListEvent, AddressListState> {
         homeBloc.add(UpdateButtonEvent());
       }
       add(const AddressListUpdatePageEvent());
+      event.show.successNotification(event.l10n.homePageSuccessNotification1);
     });
     _sendingData = false;
     add(const AddressListUpdateButtonEvent());

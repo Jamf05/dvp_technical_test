@@ -80,9 +80,11 @@ class AddressDetailBloc extends Bloc<AddressDetailEvent, AddressDetailState> {
     response.fold((l) => emit(AddressDetailFailureState(l)), (r) {
       final addressListBloc = sl.get<AddressListBloc>();
       addressListBloc.add(const AddressListUpdatePageEvent());
-      final homeBloc = sl.get<HomeBloc>();
-      homeBloc.addressTextEditingCtrl.text = newAddress.name ?? '';
-      homeBloc.user = homeBloc.user.copyWith(address: newAddress);
+      if(newAddress.selected == true) {
+        final homeBloc = sl.get<HomeBloc>();
+        homeBloc.addressTextEditingCtrl.text = newAddress.name ?? '';
+        homeBloc.user = homeBloc.user.copyWith(address: newAddress);
+      }
       event.show.successNotification(event.l10n.homePageSuccessNotification1);
       event.nav.back();
     });

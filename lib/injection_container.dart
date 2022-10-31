@@ -64,8 +64,8 @@ Future<void> init() async {
       authRemoteDataSource: sl(), authLocalDataSource: sl()));
   sl.registerLazySingleton<LocationRepository>(
       () => LocationRepositoryImpl(remoteDataSource: sl()));
-  sl.registerLazySingleton<AddressRepository>(
-      () => AddressRepositoryImpl(localDataSource: sl()));
+  sl.registerLazySingleton<AddressRepository>(() =>
+      AddressRepositoryImpl(localDataSource: sl(), authLocalDataSource: sl()));
 
   /**
    * Data Sources
@@ -79,7 +79,7 @@ Future<void> init() async {
   sl.registerLazySingleton<LocationRemoteDataSource>(
       () => LocationRemoteDataSourceImpl());
   sl.registerLazySingleton<AddressLocalDataSource>(
-      () => AddressLocalDataSourceImpl(authLocalDataSource: sl()));
+      () => AddressLocalDataSourceImpl());
 
   /**
    * Externals
