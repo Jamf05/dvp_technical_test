@@ -22,7 +22,7 @@ void main() {
     databaseFactory = databaseFactoryFfi;
     sharedPreferences = await SharedPreferences.getInstance();
     authLocalDataSource = AuthLocalDataSourceImpl(sharedPreferences: sharedPreferences);
-    addressLocalDataSource = AddressLocalDataSourceImpl(authLocalDataSource: authLocalDataSource);
+    addressLocalDataSource = AddressLocalDataSourceImpl();
   });
 
   group('get list address', () {
