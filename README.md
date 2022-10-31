@@ -1,10 +1,10 @@
 # DVP Technical Test App [![Codemagic build status](https://api.codemagic.io/apps/635e9d666520fbed792c9a3a/635e9d666520fbed792c9a39/status_badge.svg)](https://codemagic.io/apps/635e9d666520fbed792c9a3a/635e9d666520fbed792c9a39/latest_build)
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/MogotocoroJorge?style=social)](https://twitter.com/MogotocoroJorge)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jorgemogotocoro/) [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/MogotocoroJorge) [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:jorgemogotocoro05@outlook.es)
 
 A simple Flutter application with a form to save your personal data and a list of your addresses in the local data of the device.
 
-To download this app, click here to see the [codemagic](https://codemagic.io/apps/635e9d666520fbed792c9a3a/635e9d666520fbed792c9a39/latest_build) builds. You can choose to install the apk or the ipa(ios).
+To download this app, click here to see the [codemagic](https://codemagic.io/app/635e9d666520fbed792c9a3a/build/635e9ecc6520fb6c1b6738a0) builds. You can choose to install the apk or the ipa(ios).
 
 | Please star ⭐ the repo if you like what you see 😉.
 
@@ -251,4 +251,4 @@ This project follows the guidelines of clean architecture.
 
 ## 👨‍💻 Author(s)
 
-**Jorge A. Mogotocoro F.** [![Twitter Follow](https://img.shields.io/twitter/follow/MogotocoroJorge?style=social)](https://twitter.com/MogotocoroJorge)
+[**Jorge A. Mogotocoro F.**](https://www.linkedin.com/in/jorgemogotocoro/)
