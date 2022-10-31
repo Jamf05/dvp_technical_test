@@ -12,16 +12,16 @@ abstract class AddressLocalDataSource {
 }
 
 class AddressLocalDataSourceImpl implements AddressLocalDataSource {
-  final DatabaseHelper _databaseHelper = DatabaseHelper.instance;
-  AddressLocalDataSourceImpl();
+  final DatabaseHelper databaseHelper;
+  AddressLocalDataSourceImpl({required this.databaseHelper});
   @override
   Future<List<AddressModel>?> getListAddress() async {
     try {
       List<AddressModel>? list = [];
       String orderBy = "created_at DESC";
       final res =
-          await _databaseHelper.selectQuery("address", orderBy: orderBy);
-      if (res != null && res.length > 0) {
+          await databaseHelper.select("address", orderBy: orderBy);
+      if (res != null && res.isNotEmpty) {
         var listElement = List<Map<String, dynamic>>.generate(
             res.length, (index) => Map<String, dynamic>.from(res[index]),
             growable: true);
@@ -43,7 +43,7 @@ class AddressLocalDataSourceImpl implements AddressLocalDataSource {
   @override
   Future<bool> removeAddress(AddressModel address) async {
     try {
-      await _databaseHelper.execute(
+      await databaseHelper.execute(
         '''DELETE FROM address WHERE id = ${address.id}''',
       );
       return true;
@@ -59,14 +59,14 @@ class AddressLocalDataSourceImpl implements AddressLocalDataSource {
   @override
   Future<bool> saveAddress(AddressModel address) async {
     try {
-      await _databaseHelper.execute('''BEGIN TRANSACTION;''');
-      await _databaseHelper.execute(
+      await databaseHelper.execute('''BEGIN TRANSACTION;''');
+      await databaseHelper.execute(
         '''UPDATE address SET selected = 0''',
       );
-      await _databaseHelper.execute(
+      await databaseHelper.execute(
         '''INSERT OR REPLACE INTO address (id, name, selected) VALUES(${address.id}, '${address.name}', ${address.selected == true ? 1 : 0})''',
       );
-      await _databaseHelper.execute('''COMMIT;''');
+      await databaseHelper.execute('''COMMIT;''');
       return true;
     } on DatabaseException catch (error) {
       throw SqfliteFailure.decode(error);
@@ -81,10 +81,10 @@ class AddressLocalDataSourceImpl implements AddressLocalDataSource {
   Future<bool> setAddress(AddressModel address) async {
     try {
       if(address.selected == true) {
-        await _databaseHelper.execute('''UPDATE address SET selected = 0''',);
+        await databaseHelper.execute('''UPDATE address SET selected = 0''',);
       }
       String? where = "id = ${address.id}";
-      await _databaseHelper.update("address", address.toQuery(), where, []);
+      await databaseHelper.update("address", address.toQuery(), where, []);
       return true;
     } on DatabaseException catch (error) {
       throw SqfliteFailure.decode(error);

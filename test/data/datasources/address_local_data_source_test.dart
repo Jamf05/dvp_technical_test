@@ -1,4 +1,6 @@
+import 'package:dvp_technical_test/core/database/database_helper.dart';
 import 'package:dvp_technical_test/core/env.dart';
+import 'package:dvp_technical_test/core/failures/exception.dart';
 import 'package:dvp_technical_test/features/data/datasource/address_local_data_source.dart';
 import 'package:dvp_technical_test/features/data/datasource/auth_local_data_source.dart';
 import 'package:dvp_technical_test/features/data/models/address_model.dart';
@@ -12,6 +14,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
   // Init ffi loader if needed.
+  late DatabaseHelper databaseHelper;
   late SharedPreferences sharedPreferences;
   late AuthLocalDataSourceImpl authLocalDataSource;
   late AddressLocalDataSourceImpl addressLocalDataSource;
@@ -35,8 +38,10 @@ void main() {
     // Change the default factory
     databaseFactory = databaseFactoryFfi;
     sharedPreferences = await SharedPreferences.getInstance();
+    DatabaseHelper.deleteDatabase();
+    databaseHelper = await DatabaseHelper.init();
     authLocalDataSource = AuthLocalDataSourceImpl(sharedPreferences: sharedPreferences);
-    addressLocalDataSource = AddressLocalDataSourceImpl();
+    addressLocalDataSource = AddressLocalDataSourceImpl(databaseHelper: databaseHelper);
   });
 
   group("save Address", () {
@@ -52,7 +57,6 @@ void main() {
       () async {
         // act
         final result = await addressLocalDataSource.getListAddress();
-
         // assert
         expect(result, equals([]));
       },

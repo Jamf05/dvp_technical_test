@@ -13,8 +13,8 @@ import 'package:dvp_technical_test/injection_container.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await di.init();
   await Env.load(fileName: Assets.env.envProduction);
+  await di.init();
   sl.registerSingleton(GlobalSessionBloc());
   runZoned<Future<void>>(
     () async {

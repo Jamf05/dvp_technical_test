@@ -14,7 +14,7 @@ class SchemaDB {
   static const addressName = 'address';
   static const addressTable = ''' 
     CREATE TABLE IF NOT EXISTS address (
-      id INTEGER PRIMARY KEY,
+      id INTEGER PRIMARY KEY NOT NULL,
       name TEXT NOT NULL,
       selected INTEGER DEFAULT 0,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -38,19 +38,17 @@ class SchemaDB {
 
 class DatabaseHelper {
   static const _databaseName = "dvp_technical_test.db";
+  static final DatabaseHelper _instance = DatabaseHelper._internal();
+  DatabaseHelper._internal();
 
-  DatabaseHelper._privateConstructor();
+  late Database _database;
 
-  static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
-
-  static Database? _database;
-
-  Future<Database?> get database async {
-    _database = await _initDatabase();
-    return _database;
+  static Future<DatabaseHelper> init() async {
+    _instance._database = await _instance._initDatabase();
+    return _instance;
   }
 
-  Future<Database>? _initDatabase() async {
+  Future<Database> _initDatabase() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, _databaseName);
     final databaseVersion = UpdateApplicationUtils.appVersionToInt(Env.version);
@@ -62,80 +60,60 @@ class DatabaseHelper {
     return database;
   }
 
+  static Future<void> deleteDatabase() async {
+    Directory documentDirectory = await getApplicationDocumentsDirectory();
+    String path = join(documentDirectory.path, _databaseName);
+    await databaseFactory.deleteDatabase(path);
+  }
+
   Future<void> _onCreate(Database db, int version) async {
-    log("Create DB, version: $version", name: "insertDB");
+    log("Create DB, version: $version", name: "INSERTDB");
     for (var item in SchemaDB.tables.values.toList()) {
       await db.execute(item);
     }
   }
 
-  Future<int> insertDB(String table, Map<String, dynamic> values) async {
-    log("${table.toString()}, ${values.toString()}", name: "insertDB");
-    Database? db = await database;
-    int? id = await db!.insert(table, values);
+  Future<int> insert(String table, Map<String, dynamic> values) async {
+    log("${table.toString()}, ${values.toString()}", name: "INSERTDB");
+    Database? db = _instance._database;
+    int? id = await db.insert(table, values);
     return id;
   }
 
-  Future<int> rawInsertOrReplace(
-    String table,
-    String colums,
-    List<dynamic> values,
-  ) async {
-    Database? db = await database;
-    String singValues = "";
-
-    for (var i in values) {
-      singValues += "?,";
-    }
-
-    singValues = singValues.substring(0, singValues.length - 1);
-    var res;
-    log("INSERT OR REPLACE INTO $table ($colums) VALUES($singValues)",
-        name: "rawInsertDB");
-    res = await db?.rawInsert('''
-      INSERT OR REPLACE INTO $table ($colums) VALUES($singValues)
-      ''', values);
-    return res;
-  }
-
-  Future selectQuery(String table,
+  Future<List<Map<dynamic, dynamic>>?> select(String table,
       {List<String>? cols,
       String? where,
       List<dynamic>? whereArgs,
       String? orderBy}) async {
-    Database? db = await database;
+    Database? db = _instance._database;
     log("${table.toString()}, ${cols.toString()}, ${where.toString()}",
-        name: "selectDB");
-    List<Map>? maps = await db?.query(table,
+        name: "SELECTDB");
+    List<Map>? maps = await db.query(table,
         columns: cols, where: where, whereArgs: whereArgs, orderBy: orderBy);
-    if (maps!.isNotEmpty) {
-      return maps;
-    }
-
-    return null;
+    return maps;
   }
 
-  Future<void> update(String table, Map<String, dynamic> values, String where,
-      List<dynamic> whereArgs) async {
-    Database? db = await database;
+  Future<void> update(String table, Map<String, dynamic> values,
+      String where, List<dynamic> whereArgs) async {
+    Database? db = _database;
     log("${table.toString()}, ${values.toString()}, ${where.toString()}",
-        name: "updateDB");
+        name: "UPDATEDB");
     final res =
-        await db?.update(table, values, where: where, whereArgs: whereArgs);
-    log("$res", name: "updateDB-res");
+        await db.update(table, values, where: where, whereArgs: whereArgs);
+    log("$res", name: "UPDATEDB-RES");
   }
 
   Future<void> execute(String? sql, {Database? db}) async {
-    log(sql ?? "", name: "executeDB");
-    Database? db_ = db ?? await database;
-    await db_?.execute(sql ?? "");
+    log(sql ?? "", name: "EXECUTEDB");
+    Database? db_ = db ?? _database;
+    await db_.execute(sql ?? "");
   }
 
   Future<void> delete(String table, {Database? db}) async {
     String sql = "DROP TABLE IF EXISTS $table;";
-    Database? db_ = db ?? await database;
-    await db_?.execute(sql);
-    log(sql, name: "deleteDB");
+    Database? db_ = db ?? _database;
+    await db_.execute(sql);
+    log(sql, name: "DELETEDB");
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
@@ -153,7 +131,7 @@ class DatabaseHelper {
   }
 
   Future<void> _onUpgradeQuery(Database db, int version) async {
-    if (!await doMigration(db)) await _clearAllTable(db);
+    if (!await _doMigration(db)) await _clearAllTable(db);
     log("Upgrade DB, version: $version", name: "DB");
     // String table = '''
     // ''';
@@ -178,7 +156,7 @@ class DatabaseHelper {
   }
 
   Future<void> _onDowngradeQuery(Database db, int version) async {
-    if (!await doMigration(db)) await _clearAllTable(db);
+    if (!await _doMigration(db)) await _clearAllTable(db);
     log("Downgrade DB, version: $version", name: "DB");
     // String table = '''
     // ''';
@@ -208,7 +186,7 @@ class DatabaseHelper {
     }
   }
 
-  Future<bool> doMigration(Database db) async {
+  Future<bool> _doMigration(Database db) async {
     for (var t in SchemaDB.toMigrate) {
       try {
         final r = await db

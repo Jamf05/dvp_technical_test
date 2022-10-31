@@ -1,4 +1,5 @@
 import 'package:dvp_technical_test/core/database/collections_name.dart';
+import 'package:dvp_technical_test/core/database/database_helper.dart';
 import 'package:dvp_technical_test/features/app/blocs/address_detail_bloc/address_detail_bloc.dart';
 import 'package:dvp_technical_test/features/data/datasource/address_local_data_source.dart';
 import 'package:dvp_technical_test/features/data/repositories/address_repository_impl.dart';
@@ -31,7 +32,7 @@ import 'package:dvp_technical_test/features/domain/usecases/reject_user_confirma
 
 final sl = GetIt.instance;
 
-Future<void> init() async {
+Future<void> init() async { 
   /**
    * Blocs
    */
@@ -79,7 +80,13 @@ Future<void> init() async {
   sl.registerLazySingleton<LocationRemoteDataSource>(
       () => LocationRemoteDataSourceImpl());
   sl.registerLazySingleton<AddressLocalDataSource>(
-      () => AddressLocalDataSourceImpl());
+      () => AddressLocalDataSourceImpl(databaseHelper: sl()));
+  
+  /**
+   * Database 
+   */
+  final databaseHelper = await DatabaseHelper.init();
+  sl.registerLazySingleton(() => databaseHelper);
 
   /**
    * Externals
