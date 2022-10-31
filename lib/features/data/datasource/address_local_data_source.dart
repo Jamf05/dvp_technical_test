@@ -1,9 +1,7 @@
 import 'package:dvp_technical_test/core/database/database_helper.dart';
 import 'package:dvp_technical_test/core/failures/error.dart';
 import 'package:dvp_technical_test/core/failures/exception.dart';
-import 'package:dvp_technical_test/features/data/datasource/auth_local_data_source.dart';
 import 'package:dvp_technical_test/features/data/models/address_model.dart';
-import 'package:dvp_technical_test/features/data/models/user_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class AddressLocalDataSource {
@@ -14,11 +12,8 @@ abstract class AddressLocalDataSource {
 }
 
 class AddressLocalDataSourceImpl implements AddressLocalDataSource {
-  final AuthLocalDataSource authLocalDataSource;
   final DatabaseHelper _databaseHelper = DatabaseHelper.instance;
-
-  AddressLocalDataSourceImpl({required this.authLocalDataSource});
-
+  AddressLocalDataSourceImpl();
   @override
   Future<List<AddressModel>?> getListAddress() async {
     try {
@@ -51,13 +46,6 @@ class AddressLocalDataSourceImpl implements AddressLocalDataSource {
       await _databaseHelper.execute(
         '''DELETE FROM address WHERE id = ${address.id}''',
       );
-      final currentUser = await authLocalDataSource.getCurrentUser();
-      final currentAddress = currentUser?.address;
-      if (currentUser == null || currentAddress == null) return true;
-      if (currentAddress.id == address.id) {
-        await authLocalDataSource.setCurrentUser(
-            currentUser.copyWithModel(address: const AddressModel()));
-      }
       return true;
     } on DatabaseException catch (error) {
       throw SqfliteFailure.decode(error);
@@ -79,11 +67,6 @@ class AddressLocalDataSourceImpl implements AddressLocalDataSource {
         '''INSERT OR REPLACE INTO address (id, name, selected) VALUES(${address.id}, '${address.name}', ${address.selected == true ? 1 : 0})''',
       );
       await _databaseHelper.execute('''COMMIT;''');
-      UserModel? currentUser = await authLocalDataSource.getCurrentUser();
-      if (currentUser != null) {
-        currentUser = currentUser.copyWithModel(address: address);
-        await authLocalDataSource.setCurrentUser(currentUser);
-      }
       return true;
     } on DatabaseException catch (error) {
       throw SqfliteFailure.decode(error);
@@ -97,14 +80,11 @@ class AddressLocalDataSourceImpl implements AddressLocalDataSource {
   @override
   Future<bool> setAddress(AddressModel address) async {
     try {
-      await _databaseHelper.execute('''UPDATE address SET selected = 0''',);
+      if(address.selected == true) {
+        await _databaseHelper.execute('''UPDATE address SET selected = 0''',);
+      }
       String? where = "id = ${address.id}";
       await _databaseHelper.update("address", address.toQuery(), where, []);
-      UserModel? currentUser = await authLocalDataSource.getCurrentUser();
-      if (currentUser != null) {
-        currentUser = currentUser.copyWithModel(address: address);
-        await authLocalDataSource.setCurrentUser(currentUser);
-      }
       return true;
     } on DatabaseException catch (error) {
       throw SqfliteFailure.decode(error);
