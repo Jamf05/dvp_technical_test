@@ -1,5 +1,7 @@
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
 import 'package:dvp_technical_test/features/app/blocs/address_detail_bloc/address_detail_bloc.dart';
+import 'package:dvp_technical_test/features/app/blocs/address_list_bloc/address_list_bloc.dart';
+import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
 import 'package:dvp_technical_test/features/app/custom/components/custom_invisible_app_bar.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/custom_text_field.dart';
@@ -51,7 +53,7 @@ class _AddressDetailPageState
         body: BlocListener<AddressDetailBloc, AddressDetailState>(
             listener: (context, state) {
               if (state is AddressDetailFailureState) {
-                show.eitherError(state.failure);
+                overlay.eitherError(state.failure);
               }
             },
             bloc: bloc,
@@ -86,7 +88,12 @@ class _AddressDetailPageState
                           loading: bloc.sendingData,
                           padding: const EdgeInsets.only(bottom: 10),
                           text: l10n.saveWord,
-                          onPressed: () => bloc.runBasedOn(nav, show, l10n));
+                          onPressed: () => bloc.runBasedOn(
+                              router: router,
+                              overlay: overlay,
+                              l10n: l10n,
+                              addressListBloc: BlocProvider.of<AddressListBloc>(context),
+                              homeBloc: BlocProvider.of<HomeBloc>(context)));
                     },
                   )
                 ],

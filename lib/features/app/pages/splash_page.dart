@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'package:dvp_technical_test/features/app/bindings/home_binding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
-import 'package:dvp_technical_test/features/app/blocs/splash_bloc/splash_bloc.dart'; 
+import 'package:dvp_technical_test/features/app/blocs/splash_bloc/splash_bloc.dart';
 import 'package:dvp_technical_test/features/app/pages/home_page.dart';
 import 'package:dvp_technical_test/features/domain/entities/enums/session_status.dart';
 
@@ -28,7 +27,7 @@ class SplashPageState extends BaseBlocState<SplashPage, SplashBloc> {
         bloc: bloc,
         listener: (context, state) {
           if (state is FailureState) {
-            show.dialog(
+            overlay.dialog(
                 title: 'Advertencia',
                 useSingleAction: true,
                 message: (state.failure.message));
@@ -62,7 +61,12 @@ class SplashPageState extends BaseBlocState<SplashPage, SplashBloc> {
     return Timer(const Duration(milliseconds: 700), () {
       switch (session) {
         default:
-          nav.offAll(const HomePage(), binding: HomeBinding());
+          router.offAll(
+            BlocProvider.value(
+              value: bloc,
+              child: const HomePage(),
+            ),
+          );
       }
     });
   }

@@ -1,17 +1,15 @@
-import 'package:dvp_technical_test/core/binding/bindings_interface.dart';
 import 'package:flutter/material.dart';
 
-class Nav {
+class AppRouter {
   final BuildContext context;
-  Nav._(this.context);
+  AppRouter._(this.context);
 
-  static Nav of(context) {
-    return Nav._(context);
+  static AppRouter of(context) {
+    return AppRouter._(context);
   }
 
   /// **Navigator.push()** shortcut.
-  Future<T?> to<T extends Object>(Widget route, {Bindings? binding}) {
-    binding?.dependencies();
+  Future<T?> to<T extends Object>(Widget route) {
     return Navigator.push<T>(
       context,
       PageRouteBuilder<T>(
@@ -36,8 +34,7 @@ class Nav {
 
   /// **Navigator.pushReplacement()** shortcut.
   Future<T?> off<T extends Object?, TO extends Object?>(Widget newRoute,
-      {TO? result, Bindings? binding}) {
-    binding?.dependencies();
+      {TO? result}) {
     return Navigator.pushReplacement<T, TO>(
         context,
         PageRouteBuilder<T>(
@@ -64,8 +61,7 @@ class Nav {
 
   /// **Navigator.pushAndRemoveUntil()** shortcut.
   Future<T?> offAll<T extends Object>(Widget newRoute,
-      {bool Function(Route<dynamic>)? predicate, Bindings? binding}) {
-    binding?.dependencies();
+      {bool Function(Route<dynamic>)? predicate}) {
     return Navigator.of(context).pushAndRemoveUntil<T>(
         PageRouteBuilder<T>(
           pageBuilder: (context, animation, secondaryAnimation) => newRoute,

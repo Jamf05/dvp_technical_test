@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dvp_technical_test/core/failures/failure.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';
-import 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
+import 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
 import 'package:dvp_technical_test/core/usecase/usecase.dart';
 import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
 import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
@@ -71,13 +71,12 @@ class AddressListBloc extends Bloc<AddressListEvent, AddressListState> {
     await Future.delayed(const Duration(seconds: 1));
     final response =
         await _setAddressUseCase.call(event.address.copyWith(selected: true));
-    response.fold((l) => event.show.eitherError(l), (r) {
-      final homeBloc = sl<HomeBloc>();
-      homeBloc.addressTextEditingCtrl.text = event.address.name ?? '';
-      homeBloc.user = homeBloc.user.copyWith(address: event.address);
-      homeBloc.add(UpdateButtonEvent());
+    response.fold((l) => event.overlay.eitherError(l), (r) {
+      event.homeBloc.addressTextEditingCtrl.text = event.address.name ?? '';
+      event.homeBloc.user = event.homeBloc.user.copyWith(address: event.address);
+      event.homeBloc.add(UpdateButtonEvent());
       add(const AddressListUpdatePageEvent());
-      event.show.successNotification(event.l10n.homePageSuccessNotification1);
+      event.overlay.successNotification(event.l10n.homePageSuccessNotification1);
     });
     _sendingData = false;
     add(const AddressListUpdateButtonEvent());
@@ -89,15 +88,14 @@ class AddressListBloc extends Bloc<AddressListEvent, AddressListState> {
     add(const AddressListUpdateButtonEvent());
     await Future.delayed(const Duration(seconds: 1));
     final response = await _removeAddressUseCase.call(event.address);
-    response.fold((l) => event.show.eitherError(l), (r) {
-      final homeBloc = sl<HomeBloc>();
+    response.fold((l) => event.overlay.eitherError(l), (r) {
       if (event.address.selected == true) {
-        homeBloc.addressTextEditingCtrl.text = '';
-        homeBloc.user = homeBloc.user.copyWith(address: const AddressEntity());
-        homeBloc.add(UpdateButtonEvent());
+        event.homeBloc.addressTextEditingCtrl.text = '';
+        event.homeBloc.user = event.homeBloc.user.copyWith(address: const AddressEntity());
+        event.homeBloc.add(UpdateButtonEvent());
       }
       add(const AddressListUpdatePageEvent());
-      event.show.successNotification(event.l10n.homePageSuccessNotification1);
+      event.overlay.successNotification(event.l10n.homePageSuccessNotification1);
     });
     _sendingData = false;
     add(const AddressListUpdateButtonEvent());

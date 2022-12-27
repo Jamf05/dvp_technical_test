@@ -6,15 +6,11 @@ import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/modal_decoration_widget.dart';
 
-class Show {
+class CustomOverlay {
   final BuildContext _context;
   final Size _size;
-  Show._(this._context, this._size);
-
-  static Show of(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Show._(context, size);
-  }
+  CustomOverlay._(this._context) : _size = MediaQuery.of(_context).size;
+  static CustomOverlay of(BuildContext context) => CustomOverlay._(context);
 
   Future<T?> dialog<T>(
       {Widget? child,
@@ -224,7 +220,11 @@ class Show {
                     const SizedBox(
                       height: 34.78,
                     ),
-                    Text(title ?? '', style: titleStyle ?? AppFonts.promptM17, textAlign: TextAlign.center,),
+                    Text(
+                      title ?? '',
+                      style: titleStyle ?? AppFonts.promptM17,
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(
                       height: 18.11,
                     ),
@@ -673,8 +673,8 @@ class _OverlayWidgetState extends State<_OverlayWidget>
                                       const EdgeInsets.symmetric(
                                           horizontal: 15.0, vertical: 15.0),
                                   decoration: BoxDecoration(
-                                      border:
-                                          Border.all(color: const Color(0xFFDBDBDB)),
+                                      border: Border.all(
+                                          color: const Color(0xFFDBDBDB)),
                                       borderRadius: BorderRadius.circular(16),
                                       color: widget.background ??
                                           Colors.transparent),

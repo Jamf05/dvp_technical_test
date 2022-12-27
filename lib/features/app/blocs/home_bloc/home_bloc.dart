@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dvp_technical_test/core/failures/failure.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';
-import 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
+import 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
 import 'package:dvp_technical_test/core/usecase/usecase.dart';
 import 'package:dvp_technical_test/core/utils/formaters.dart';
 import 'package:dvp_technical_test/core/validators/text_input.dart';
@@ -101,7 +101,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final response = await _setUserUseCase.call(newUser);
     response.fold((l) => emit(HomeFailureState(l)), (r) {
       user = newUser;
-      event.show.successNotification(event.l10n.homePageSuccessNotification1);
+      event.overlay.successNotification(event.l10n.homePageSuccessNotification1);
     });
     sendingData = false;
     add(UpdateButtonEvent());

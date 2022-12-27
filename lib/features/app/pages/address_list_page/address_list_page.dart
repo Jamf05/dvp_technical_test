@@ -1,6 +1,6 @@
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
-import 'package:dvp_technical_test/features/app/bindings/address_list_binding.dart';
 import 'package:dvp_technical_test/features/app/blocs/address_list_bloc/address_list_bloc.dart';
+import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
 import 'package:dvp_technical_test/features/app/custom/components/custom_invisible_app_bar.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/circular_progress_indicator_widget.dart';
@@ -41,12 +41,6 @@ class _AddressListPageState
   }
 
   @override
-  void dispose() {
-    AddressListBinding().dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomInvisibleAppBar(
@@ -62,15 +56,25 @@ class _AddressListPageState
                 padding: const EdgeInsets.only(
                     bottom: 10, left: 23, right: 23, top: 10),
                 text: l10n.newAddressWord,
-                onPressed: () => nav.to(const AddressDetailPage(
-                      action: AddressDetailAction.create,
+                onPressed: () => router.to(MultiBlocProvider(
+                      providers: [
+                        BlocProvider<AddressListBloc>.value(
+                          value: bloc,
+                        ),
+                        BlocProvider<HomeBloc>.value(
+                          value: BlocProvider.of<HomeBloc>(context),
+                        )
+                      ],
+                      child: const AddressDetailPage(
+                        action: AddressDetailAction.create,
+                      ),
                     )));
           },
         ),
         body: BlocConsumer<AddressListBloc, AddressListState>(
           listener: (context, state) {
             if (state is AddressListFailureState) {
-              show.eitherError(state.failure);
+              overlay.eitherError(state.failure);
             }
           },
           bloc: bloc,
@@ -101,13 +105,27 @@ class _AddressListPageState
                   ...bloc.list.map((e) => AddressItemWidget(
                         data: e,
                         onSelecting: (AddressEntity address) => bloc.add(
-                            AddressListOnSelectingEvent(address, l10n, show)),
+                            AddressListOnSelectingEvent(
+                                address: address,
+                                l10n: l10n,
+                                overlay: overlay,
+                                homeBloc: BlocProvider.of<HomeBloc>(context))),
                         onDelete: (AddressEntity address) =>
                             onDelete.call(address),
                         onEdit: (AddressEntity address) =>
-                            nav.to(AddressDetailPage(
-                          address: e,
-                          action: AddressDetailAction.edit,
+                            router.to(MultiBlocProvider(
+                          providers: [
+                            BlocProvider<AddressListBloc>.value(
+                              value: bloc,
+                            ),
+                            BlocProvider<HomeBloc>.value(
+                              value: BlocProvider.of<HomeBloc>(context),
+                            )
+                          ],
+                          child: AddressDetailPage(
+                            address: e,
+                            action: AddressDetailAction.edit,
+                          ),
                         )),
                       )),
                 ],
@@ -118,7 +136,7 @@ class _AddressListPageState
   }
 
   void onDelete(AddressEntity address) {
-    show.modalDefault(
+    overlay.modalDefault(
         title: l10n.confirmDeleteAddressPhrase,
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,15 +145,19 @@ class _AddressListPageState
               width: (size.width / 2) - 40,
               text: l10n.yesWord,
               onPressed: () async {
-                bloc.add(AddressListOnRemoveEvent(address, l10n, show));
-                nav.back();
+                bloc.add(AddressListOnRemoveEvent(
+                    address: address,
+                    l10n: l10n,
+                    overlay: overlay,
+                    homeBloc: BlocProvider.of<HomeBloc>(context)));
+                router.back();
               },
             ),
             ButtonWidget(
               width: (size.width / 2) - 40,
               text: l10n.noWord,
               onPressed: () async {
-                nav.back();
+                router.back();
               },
             ),
           ],

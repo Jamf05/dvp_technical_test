@@ -11,17 +11,29 @@ class AddressListUpdatePageEvent extends AddressListEvent {
 }
 
 class AddressListOnSelectingEvent extends AddressListEvent {
+  final HomeBloc homeBloc;
   final AppLocalizations l10n;
-  final Show show;
+  final CustomOverlay overlay;
   final AddressEntity address;
-  const AddressListOnSelectingEvent(this.address, this.l10n, this.show);
+  const AddressListOnSelectingEvent({
+    required this.address,
+    required this.l10n,
+    required this.overlay,
+    required this.homeBloc
+  });
 }
 
 class AddressListOnRemoveEvent extends AddressListEvent {
+  final HomeBloc homeBloc;
   final AppLocalizations l10n;
-  final Show show;
+  final CustomOverlay overlay;
   final AddressEntity address;
-  const AddressListOnRemoveEvent(this.address, this.l10n, this.show);
+  const AddressListOnRemoveEvent({
+    required this.address,
+    required this.l10n,
+    required this.overlay,
+    required this.homeBloc
+  });
 }
 
 class AddressListUpdateButtonEvent extends AddressListEvent {

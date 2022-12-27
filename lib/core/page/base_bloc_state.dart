@@ -1,17 +1,19 @@
+export 'package:dvp_technical_test/core/routing/app_router.dart';
 export 'package:dvp_technical_test/core/settings/app_settings.dart';
+export 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
 
+import 'package:dvp_technical_test/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dvp_technical_test/injection_container.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';
-import 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
-import 'package:dvp_technical_test/core/utils/navigation.dart';
+import 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
 
 abstract class BaseBlocState<T extends StatefulWidget,K extends Bloc> extends State<T>{
   late K bloc;
   late Size size;
-  late Nav nav;
-  late Show show; 
+  late AppRouter router;
+  late CustomOverlay overlay; 
   late AppLocalizations l10n;
   late ThemeData theme;
   late bool isDarkTheme;
@@ -25,10 +27,10 @@ abstract class BaseBlocState<T extends StatefulWidget,K extends Bloc> extends St
 
   @override
   void didChangeDependencies() {
-    nav = Nav.of(context);
+    router = AppRouter.of(context);
     size = MediaQuery.of(context).size;
     l10n = AppLocalizations.of(context);
-    show = Show.of(context);
+    overlay = CustomOverlay.of(context);
     theme = Theme.of(context);
     isDarkTheme = theme.brightness == Brightness.dark;
     super.didChangeDependencies();

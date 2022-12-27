@@ -1,6 +1,5 @@
-export 'package:dvp_technical_test/core/utils/navigation.dart';
 export 'package:dvp_technical_test/core/settings/app_settings.dart';
-export 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
+export 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
 
 import 'package:flutter/material.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';

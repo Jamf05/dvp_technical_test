@@ -12,23 +12,34 @@ class AddressDetailUpdateButtonEvent extends AddressDetailEvent {
 }
 
 class SaveAddressEvent extends AddressDetailEvent {
-  final Nav nav;
-  final Show show;
+  final AddressListBloc addressListBloc;
+  final HomeBloc homeBloc;
+  final AppRouter router;
+  final CustomOverlay overlay;
   final AppLocalizations l10n;
-  const SaveAddressEvent(this.nav, this.show, this.l10n);
+  const SaveAddressEvent(
+      {required this.homeBloc,
+      required this.addressListBloc,
+      required this.router,
+      required this.overlay,
+      required this.l10n});
 }
 
 class SetAddressEvent extends AddressDetailEvent {
-  final Nav nav;
-  final Show show;
+  final AddressListBloc addressListBloc;
+  final HomeBloc homeBloc;
+  final AppRouter router;
+  final CustomOverlay overlay;
   final AppLocalizations l10n;
-  const SetAddressEvent(this.nav, this.show, this.l10n);
+  const SetAddressEvent(
+      {required this.homeBloc,
+      required this.addressListBloc,
+      required this.router,
+      required this.overlay,
+      required this.l10n});
 }
-
-
 
 class AddressDetailFailureEvent extends AddressDetailEvent {
-  final Show show;
-  const AddressDetailFailureEvent(this.show);
+  final CustomOverlay overlay;
+  const AddressDetailFailureEvent(this.overlay);
 }
-

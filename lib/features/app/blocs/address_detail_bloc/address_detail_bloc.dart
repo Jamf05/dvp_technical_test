@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dvp_technical_test/core/failures/failure.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';
-import 'package:dvp_technical_test/core/overlay/custom_overlays.dart';
-import 'package:dvp_technical_test/core/utils/navigation.dart';
+import 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
+import 'package:dvp_technical_test/core/routing/app_router.dart';
 import 'package:dvp_technical_test/core/validators/text_input.dart';
 import 'package:dvp_technical_test/features/app/blocs/address_list_bloc/address_list_bloc.dart';
 import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
@@ -58,13 +58,12 @@ class AddressDetailBloc extends Bloc<AddressDetailEvent, AddressDetailState> {
     await Future.delayed(const Duration(seconds: 1));
     final response = await _saveAddressUseCase.call(newAddress);
     response.fold((l) => emit(AddressDetailFailureState(l)), (r) {
-      final addressListBloc = sl.get<AddressListBloc>();
-      addressListBloc.add(const AddressListUpdatePageEvent());
-      final homeBloc = sl.get<HomeBloc>();
-      homeBloc.addressTextEditingCtrl.text = newAddress.name ?? '';
-      homeBloc.user = homeBloc.user.copyWith(address: newAddress);
-      event.show.successNotification(event.l10n.homePageSuccessNotification1);
-      event.nav.back();
+      event.addressListBloc.add(const AddressListUpdatePageEvent());
+      event.homeBloc.addressTextEditingCtrl.text = newAddress.name ?? '';
+      event.homeBloc.user = event.homeBloc.user.copyWith(address: newAddress);
+      event.overlay
+          .successNotification(event.l10n.homePageSuccessNotification1);
+      event.router.back();
     });
     sendingData = false;
     add(const AddressDetailUpdateButtonEvent());
@@ -78,33 +77,48 @@ class AddressDetailBloc extends Bloc<AddressDetailEvent, AddressDetailState> {
     await Future.delayed(const Duration(seconds: 1));
     final response = await _setAddressUseCase.call(newAddress);
     response.fold((l) => emit(AddressDetailFailureState(l)), (r) {
-      final addressListBloc = sl.get<AddressListBloc>();
-      addressListBloc.add(const AddressListUpdatePageEvent());
-      if(newAddress.selected == true) {
-        final homeBloc = sl.get<HomeBloc>();
-        homeBloc.addressTextEditingCtrl.text = newAddress.name ?? '';
-        homeBloc.user = homeBloc.user.copyWith(address: newAddress);
+      event.addressListBloc.add(const AddressListUpdatePageEvent());
+      if (newAddress.selected == true) {
+        event.homeBloc.addressTextEditingCtrl.text = newAddress.name ?? '';
+        event.homeBloc.user = event.homeBloc.user.copyWith(address: newAddress);
       }
-      event.show.successNotification(event.l10n.homePageSuccessNotification1);
-      event.nav.back();
+      event.overlay
+          .successNotification(event.l10n.homePageSuccessNotification1);
+      event.router.back();
     });
     sendingData = false;
     add(const AddressDetailUpdateButtonEvent());
   }
 
-  Future<void> initState({AddressEntity? address, required AddressDetailAction action}) async {
+  Future<void> initState(
+      {AddressEntity? address, required AddressDetailAction action}) async {
     _action = action;
     this.address = address ?? this.address;
     _addressInput = _addressInput.copyWith(this.address.name ?? '');
   }
 
-  void runBasedOn(Nav nav, Show show, AppLocalizations l10n) async {
+  void runBasedOn(
+      {required HomeBloc homeBloc,
+      required AddressListBloc addressListBloc,
+      required AppRouter router,
+      required CustomOverlay overlay,
+      required AppLocalizations l10n}) async {
     switch (_action) {
       case AddressDetailAction.edit:
-        add(SetAddressEvent(nav, show, l10n));
+        add(SetAddressEvent(
+            addressListBloc: addressListBloc,
+            homeBloc: homeBloc,
+            router: router,
+            overlay: overlay,
+            l10n: l10n));
         break;
       case AddressDetailAction.create:
-        add(SaveAddressEvent(nav, show, l10n));
+        add(SaveAddressEvent(
+            addressListBloc: addressListBloc,
+            homeBloc: homeBloc,
+            router: router,
+            overlay: overlay,
+            l10n: l10n));
         break;
       default:
     }

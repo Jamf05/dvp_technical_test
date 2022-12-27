@@ -1,6 +1,8 @@
 import 'package:dvp_technical_test/core/database/collections_name.dart';
 import 'package:dvp_technical_test/core/database/database_helper.dart';
 import 'package:dvp_technical_test/features/app/blocs/address_detail_bloc/address_detail_bloc.dart';
+import 'package:dvp_technical_test/features/app/blocs/address_list_bloc/address_list_bloc.dart';
+import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
 import 'package:dvp_technical_test/features/data/datasource/address_local_data_source.dart';
 import 'package:dvp_technical_test/features/data/repositories/address_repository_impl.dart';
 import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
@@ -41,6 +43,12 @@ Future<void> init() async {
       () => SplashBloc(checkAuthenticated: sl(), rejectUserConfirmation: sl()));
   sl.registerFactory(() =>
       AddressDetailBloc(saveAddressUseCase: sl(), setAddressUseCase: sl()));
+  sl.registerFactory(() => AddressListBloc(
+        getListAddressUsecase: sl(),
+        setAddressUseCase: sl(),
+        removeAddressUseCase: sl()));
+  sl.registerFactory(
+        () => HomeBloc(getUserUseCase: sl(), setUserUseCase: sl()));
 
   /**
    * Use Cases

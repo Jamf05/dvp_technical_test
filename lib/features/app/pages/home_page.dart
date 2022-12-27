@@ -1,5 +1,3 @@
-import 'package:dvp_technical_test/features/app/bindings/address_list_binding.dart';
-import 'package:dvp_technical_test/features/app/bindings/home_binding.dart';
 import 'package:dvp_technical_test/features/app/custom/components/custom_invisible_app_bar.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/button_widget.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/circular_progress_indicator_widget.dart';
@@ -28,12 +26,6 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
     super.onInitState();
   }
 
-  @override
-  void dispose() {
-    HomeBinding().dispose();
-    super.dispose();
-  }
-
   List<Widget> get actions => [
         IconButton(
             onPressed: () =>
@@ -55,15 +47,14 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
         ),
         body: BlocConsumer<HomeBloc, HomeState>(
           bloc: bloc,
-          buildWhen: (previous, current) =>
-                            current is HomeLoadingState,
+          buildWhen: (previous, current) => current is HomeLoadingState,
           listener: (context, state) {
-            if(state is HomeFailureState) {
-              show.eitherError(state.failure);
+            if (state is HomeFailureState) {
+              overlay.eitherError(state.failure);
             }
           },
           builder: (context, state) {
-            if(bloc.isLoadingPage) return const CircularProgressWidget();
+            if (bloc.isLoadingPage) return const CircularProgressWidget();
             return Stack(
               children: [
                 SingleChildScrollView(
@@ -144,7 +135,12 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                           ),
                           validator: (_) => null,
                           onChanged: (_) {},
-                          onTap: () => nav.to(const AddressListPage(), binding: AddressListBinding())),
+                          onTap: () => router.to(
+                                BlocProvider.value(
+                                  value: bloc,
+                                  child: const AddressListPage(),
+                                ),
+                              )),
                     ],
                   ),
                 ),
@@ -166,7 +162,8 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                             disable: !bloc.validForm,
                             loading: bloc.sendingData,
                             text: l10n.saveWord,
-                            onPressed: () => bloc.add(SetUserDataEvent(show, l10n)),
+                            onPressed: () =>
+                                bloc.add(SetUserDataEvent(overlay, l10n)),
                           );
                         },
                       )),

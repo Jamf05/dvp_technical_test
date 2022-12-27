@@ -41,7 +41,7 @@ class CustomBottomAppBar extends BaseStateless {
               width: 20.0,
             ),
             onPressed: () async {
-              Show.of(context).dialog(
+              CustomOverlay.of(context).dialog(
                   title: l10n.aboutApp,
                   useSingleAction: true,
                   message:
