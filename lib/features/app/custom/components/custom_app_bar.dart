@@ -1,5 +1,5 @@
+import 'package:dvp_technical_test/core/design/design.dart';
 import 'package:flutter/material.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? overrideTitle;
@@ -25,33 +25,33 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.titleText,
       this.titleTextStyle,
       this.leading = const BackButton(
-        color: AppColors.blackFirst,
+        color: ColorsToken.black,
       ),
       this.actions = const [],
       this.bottom,
-      this.backgroundColor = AppColors.whiteFirst,
+      this.backgroundColor = ColorsToken.white,
       this.leadingIconColor,
       this.actionsColor,
       this.centerTitle,
       this.toolbarHeight,
       this.titleSpacing,
-      this.shadowColor = AppColors.whiteFirst})
+      this.shadowColor = ColorsToken.white})
       : preferredSize =
             _PreferredAppBarSize(toolbarHeight, bottom?.preferredSize.height),
         super(key: key);
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: IconThemeData(color: leadingIconColor ?? AppColors.blackFirst),
+      iconTheme: IconThemeData(color: leadingIconColor ?? ColorsToken.black),
       titleSpacing: titleSpacing,
       actionsIconTheme:
-          IconThemeData(color: actionsColor ?? AppColors.blackFirst),
+          IconThemeData(color: actionsColor ?? ColorsToken.black),
       title: overrideTitle ?? Text(
         titleText ?? '',
-        style: AppFonts.promptM15,
+        style: FontsFoundation.primaryM15,
       ),
       elevation: elevation,
-      backgroundColor: backgroundColor ?? AppColors.whiteFirst,
+      backgroundColor: backgroundColor ?? ColorsToken.white,
       leading: leading,
       centerTitle: centerTitle,
       bottom: bottom,

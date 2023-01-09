@@ -1,5 +1,5 @@
+import 'package:dvp_technical_test/core/design/design.dart';
 import 'package:flutter/material.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 
 class CircularProgressWidget extends StatelessWidget {
   final Color? color;
@@ -32,7 +32,7 @@ class CircularProgressWidget extends StatelessWidget {
             height: heightCPI,
             child: CircularProgressIndicator(
               strokeWidth: strokeWidth,
-              valueColor: AlwaysStoppedAnimation<Color>(color ?? AppSettings.colors.primaryColor),
+              valueColor: AlwaysStoppedAnimation<Color>(color ?? ColorsFoundation.primary),
             ),
           ),
         ),
@@ -45,7 +45,7 @@ class CircularProgressWidget extends StatelessWidget {
           width: widthCPI,
           height: heightCPI,
           child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(color ?? AppSettings.colors.primaryColor),
+            valueColor: AlwaysStoppedAnimation<Color>(color ?? ColorsFoundation.primary),
           ),
         ),
       );

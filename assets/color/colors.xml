@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="medium_slate_blue">#7A81FF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#F44336</color>
+    <color name="gold">#E5D095</color>
+    <color name="gray_100">#434343</color>
+    <color name="gray_300">#5E5E5E</color>
+    <color name="gray_500">#797979</color>
+    <color name="gray_700">#A9A9A9</color>
+    <color name="gray_900">#D5D5D5</color>
+</resources>

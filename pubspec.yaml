@@ -65,6 +65,14 @@ dependencies:
   lottie: ^1.4.3
   flutter_dotenv: ^5.0.2
   flutter_screenutil: ^5.5.4
+  simple_router:
+    git:
+      url: https://github.com/Jamf05/flutter_simple_router.git
+      ref: main
+  simple_overlay:
+    git:
+      url: https://github.com/Jamf05/flutter_simple_overlay.git
+      ref: main
 
 dev_dependencies:
   flutter_test:
@@ -104,6 +112,22 @@ flutter_native_splash:
   image_ios: 'assets/splash/splash_icon.png'
   android_disable_fullscreen: true
   ios_content_mode: center
+
+flutter_gen:
+  assets:
+    enabled: true
+    outputs:
+      class_name: AssetsToken
+  fonts:
+    enabled: true
+    outputs:
+      class_name: FontFamilyToken
+  colors:
+    enabled: true
+    outputs:
+      class_name: ColorsToken
+    inputs:
+      - assets/color/colors.xml
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

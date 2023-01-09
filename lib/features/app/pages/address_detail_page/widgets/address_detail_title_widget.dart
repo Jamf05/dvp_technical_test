@@ -20,7 +20,7 @@ class AddressDetailTitleWidget extends StatelessWidget with BaseWidget {
     }
     return Text(
       title,
-      style: AppFonts.promptR24,
+      style: FontsFoundation.primaryR24,
       textAlign: TextAlign.center,
     );
   }

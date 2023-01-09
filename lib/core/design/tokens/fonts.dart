@@ -1,10 +1,7 @@
-part of 'app_settings.dart';
-class AppFonts {
+part of './../design.dart';
 
-  static final AppFonts _instance = AppFonts._internal();
-  AppFonts._internal();
-  factory AppFonts._() => _instance;
-  factory AppFonts._fromJson(Map<String, dynamic> json) => AppFonts._();
+class FontsToken {
+  FontsToken._();
 
   // Prompt
 
@@ -20,7 +17,22 @@ class AppFonts {
   static final TextStyle promptB13 = GoogleFonts.prompt(fontSize: 13, fontWeight: FontWeight.w700);
   static final TextStyle promptB12 = GoogleFonts.prompt(fontSize: 12, fontWeight: FontWeight.w700);
   static final TextStyle promptB11 = GoogleFonts.prompt(fontSize: 11, fontWeight: FontWeight.w700);
+  static final TextStyle promptB10 = GoogleFonts.prompt(fontSize: 10, fontWeight: FontWeight.w700);
   
+  static final TextStyle promptSb24 = GoogleFonts.prompt(fontSize: 24, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb22 = GoogleFonts.prompt(fontSize: 22, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb20 = GoogleFonts.prompt(fontSize: 20, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb19 = GoogleFonts.prompt(fontSize: 19, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb18 = GoogleFonts.prompt(fontSize: 18, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb17 = GoogleFonts.prompt(fontSize: 17, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb16 = GoogleFonts.prompt(fontSize: 16, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb15 = GoogleFonts.prompt(fontSize: 15, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb14 = GoogleFonts.prompt(fontSize: 14, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb13 = GoogleFonts.prompt(fontSize: 13, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb12 = GoogleFonts.prompt(fontSize: 12, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb11 = GoogleFonts.prompt(fontSize: 11, fontWeight: FontWeight.w600);
+  static final TextStyle promptSb10 = GoogleFonts.prompt(fontSize: 10, fontWeight: FontWeight.w600);
+
   static final TextStyle promptM24 = GoogleFonts.prompt(fontSize: 24, fontWeight: FontWeight.w500);
   static final TextStyle promptM22 = GoogleFonts.prompt(fontSize: 22, fontWeight: FontWeight.w500);
   static final TextStyle promptM20 = GoogleFonts.prompt(fontSize: 20, fontWeight: FontWeight.w500);
@@ -33,6 +45,7 @@ class AppFonts {
   static final TextStyle promptM13 = GoogleFonts.prompt(fontSize: 13, fontWeight: FontWeight.w500);
   static final TextStyle promptM12 = GoogleFonts.prompt(fontSize: 12, fontWeight: FontWeight.w500);
   static final TextStyle promptM11 = GoogleFonts.prompt(fontSize: 11, fontWeight: FontWeight.w500);
+  static final TextStyle promptM10 = GoogleFonts.prompt(fontSize: 10, fontWeight: FontWeight.w500);
 
   static final TextStyle promptR24 = GoogleFonts.prompt(fontSize: 24, fontWeight: FontWeight.w400);
   static final TextStyle promptR22 = GoogleFonts.prompt(fontSize: 22, fontWeight: FontWeight.w400);
@@ -46,6 +59,7 @@ class AppFonts {
   static final TextStyle promptR13 = GoogleFonts.prompt(fontSize: 13, fontWeight: FontWeight.w400);
   static final TextStyle promptR12 = GoogleFonts.prompt(fontSize: 12, fontWeight: FontWeight.w400);
   static final TextStyle promptR11 = GoogleFonts.prompt(fontSize: 11, fontWeight: FontWeight.w400);
+  static final TextStyle promptR10 = GoogleFonts.prompt(fontSize: 10, fontWeight: FontWeight.w400);
 
   static final TextStyle promptL24 = GoogleFonts.prompt(fontSize: 24, fontWeight: FontWeight.w300);
   static final TextStyle promptL22 = GoogleFonts.prompt(fontSize: 22, fontWeight: FontWeight.w300);
@@ -59,7 +73,5 @@ class AppFonts {
   static final TextStyle promptL13 = GoogleFonts.prompt(fontSize: 13, fontWeight: FontWeight.w300);
   static final TextStyle promptL12 = GoogleFonts.prompt(fontSize: 12, fontWeight: FontWeight.w300);
   static final TextStyle promptL11 = GoogleFonts.prompt(fontSize: 11, fontWeight: FontWeight.w300);
-
-  static final TextStyle inputTextStyle = GoogleFonts.prompt(fontSize: 14, fontWeight: FontWeight.w300);
-  static final TextStyle hintTextStyle = GoogleFonts.prompt(fontSize: 14, fontWeight: FontWeight.w300);
+  static final TextStyle promptL10 = GoogleFonts.prompt(fontSize: 10, fontWeight: FontWeight.w300);
 }

@@ -1,23 +1,19 @@
-part of 'app_settings.dart';
+part of './../design.dart';
 
-class AppStyles {
-
-  static final AppStyles _instance = AppStyles._internal();
-  AppStyles._internal();
-  factory AppStyles._() => _instance;
-  factory AppStyles._fromJson(Map<String, dynamic> json) => AppStyles._();
+class StylesFoundation {
+  StylesFoundation._internal();
 
   static const borderInputLight = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(5)),
       borderSide: BorderSide(
-        color: AppColors.blackSecond,
+        color: ColorsToken.black,
         width: 1.0
   ));
 
   static const borderInputDark = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(5)),
       borderSide: BorderSide(
-        color: AppColors.whiteFirst,
+        color: ColorsToken.white,
         width: 1.0
   ));
 
@@ -29,7 +25,7 @@ class AppStyles {
   static const boxShadow = [
     BoxShadow(
       blurRadius: 6.0,
-      color: AppColors.greySecond,
+      color: ColorsToken.gray900,
       offset: Offset(0, 3)
     ),
   ];

@@ -24,7 +24,7 @@ class LoadingWidget extends StatelessWidget with BaseWidget {
         ),
         Text(
           message,
-          style: AppFonts.promptB20,
+          style: FontsFoundation.primaryB20,
         )
       ],
     ),

@@ -1,3 +1,4 @@
+import 'package:dvp_technical_test/core/overlay/common/common_modal.dart';
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
 import 'package:dvp_technical_test/features/app/blocs/address_list_bloc/address_list_bloc.dart';
 import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
@@ -24,14 +25,13 @@ class _AddressListPageState
     extends BaseBlocState<AddressListPage, AddressListBloc> {
   List<Widget> get actions => [
         IconButton(
-            onPressed: () =>
-                AppTheme.selected.value = AppTheme.reverseBlueTheme,
+            onPressed: () => ThemeFoundation.selected.value =
+                ThemeFoundation.reverseBlueTheme,
             icon: Icon(
                 isDarkTheme
                     ? Icons.wb_sunny_outlined
                     : MdiIcons.weatherNightPartlyCloudy,
-                color:
-                    isDarkTheme ? AppColors.whiteFirst : AppColors.blackFirst))
+                color: isDarkTheme ? ColorsToken.white : ColorsToken.black))
       ];
 
   @override
@@ -96,7 +96,7 @@ class _AddressListPageState
                   ),
                   Text(
                     l10n.addressListPageTitle,
-                    style: AppFonts.promptR24,
+                    style: FontsFoundation.primaryR24,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
@@ -136,31 +136,32 @@ class _AddressListPageState
   }
 
   void onDelete(AddressEntity address) {
-    overlay.modalDefault(
-        title: l10n.confirmDeleteAddressPhrase,
-        content: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ButtonWidget(
-              width: (size.width / 2) - 40,
-              text: l10n.yesWord,
-              onPressed: () async {
-                bloc.add(AddressListOnRemoveEvent(
-                    address: address,
-                    l10n: l10n,
-                    overlay: overlay,
-                    homeBloc: BlocProvider.of<HomeBloc>(context)));
-                router.back();
-              },
-            ),
-            ButtonWidget(
-              width: (size.width / 2) - 40,
-              text: l10n.noWord,
-              onPressed: () async {
-                router.back();
-              },
-            ),
-          ],
-        ));
+    overlay.modal(
+        child: CommonChildModal(
+            title: l10n.confirmDeleteAddressPhrase,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ButtonWidget(
+                  width: (size.width / 2) - 40,
+                  text: l10n.yesWord,
+                  onPressed: () async {
+                    bloc.add(AddressListOnRemoveEvent(
+                        address: address,
+                        l10n: l10n,
+                        overlay: overlay,
+                        homeBloc: BlocProvider.of<HomeBloc>(context)));
+                    router.back();
+                  },
+                ),
+                ButtonWidget(
+                  width: (size.width / 2) - 40,
+                  text: l10n.noWord,
+                  onPressed: () async {
+                    router.back();
+                  },
+                ),
+              ],
+            )));
   }
 }

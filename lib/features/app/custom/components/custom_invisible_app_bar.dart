@@ -1,5 +1,5 @@
+import 'package:dvp_technical_test/core/design/design.dart';
 import 'package:dvp_technical_test/core/extensions/drightness.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -28,13 +28,13 @@ class CustomInvisibleAppBar extends StatelessWidget
       bottom: bottom,
       actions: actions,
       leading: ValueListenableBuilder<ThemeData>(
-        valueListenable: AppTheme.selected,
+        valueListenable: ThemeFoundation.selected,
         builder: (context, value, child) {
           return leading ??
               BackButton(
                   color: value.brightness == Brightness.dark
-                      ? AppColors.whiteFirst
-                      : AppColors.blackFirst);
+                      ? ColorsToken.white
+                      : ColorsToken.black);
         }
       ),
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -42,7 +42,7 @@ class CustomInvisibleAppBar extends StatelessWidget
         statusBarColor: Colors.transparent,
         // Status bar brightness (optional)
         statusBarIconBrightness:
-            AppTheme.selected.value.brightness.inverted, // For Android (dark icons)
+            ThemeFoundation.selected.value.brightness.inverted, // For Android (dark icons)
       ),
     );
   }

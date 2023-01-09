@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
+import 'package:dvp_technical_test/core/design/design.dart';
 import 'package:dvp_technical_test/core/validators/image_validator.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/circular_progress_indicator_widget.dart';
 
@@ -29,7 +29,7 @@ class GlobalImageProvider extends StatelessWidget {
       this.fit,
       this.errorHolder,
       this.widgetHolder =
-          const CircularProgressWidget(color: AppColors.greySecond)})
+          const CircularProgressWidget(color: ColorsToken.gray900)})
       : super(key: key);
 
   @override

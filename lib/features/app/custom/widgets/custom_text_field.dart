@@ -56,7 +56,7 @@ class CustomTextField extends StatelessWidget with BaseWidget {
       initialValue: initialValue,
       controller: controller,
       keyboardType: keyboardType,
-      style: AppFonts.inputTextStyle,
+      style: FontsFoundation.inputTextStyle,
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         suffix: suffix,
@@ -66,18 +66,18 @@ class CustomTextField extends StatelessWidget with BaseWidget {
         contentPadding:
             const EdgeInsets.only(right: 17, left: 17, top: 2, bottom: 2),
         border: Theme.of(context).brightness == Brightness.dark
-            ? AppStyles.borderInputDark
-            : AppStyles.borderInputLight,
+            ? StylesFoundation.borderInputDark
+            : StylesFoundation.borderInputLight,
         enabledBorder: Theme.of(context).brightness == Brightness.dark
-            ? AppStyles.borderInputDark
-            : AppStyles.borderInputLight,
+            ? StylesFoundation.borderInputDark
+            : StylesFoundation.borderInputLight,
         focusedBorder: Theme.of(context).brightness == Brightness.dark
-            ? AppStyles.borderInputDark
-            : AppStyles.borderInputLight,
-        hintStyle: AppFonts.hintTextStyle,
+            ? StylesFoundation.borderInputDark
+            : StylesFoundation.borderInputLight,
+        hintStyle: FontsFoundation.hintTextStyle,
         hintText: hintText,
         labelText: labelText,
-        labelStyle: AppFonts.inputTextStyle,
+        labelStyle: FontsFoundation.inputTextStyle,
       ),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: validator,

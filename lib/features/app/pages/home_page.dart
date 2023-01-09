@@ -29,13 +29,13 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
   List<Widget> get actions => [
         IconButton(
             onPressed: () =>
-                AppTheme.selected.value = AppTheme.reverseBlueTheme,
+                ThemeFoundation.selected.value = ThemeFoundation.reverseBlueTheme,
             icon: Icon(
                 isDarkTheme
                     ? Icons.wb_sunny_outlined
                     : MdiIcons.weatherNightPartlyCloudy,
                 color:
-                    isDarkTheme ? AppColors.whiteFirst : AppColors.blackFirst))
+                    isDarkTheme ? ColorsToken.white : ColorsToken.black))
       ];
 
   @override
@@ -66,14 +66,14 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                       ),
                       Text(
                         l10n.helloWord,
-                        style: AppFonts.promptR24,
+                        style: FontsFoundation.primaryR24,
                         textAlign: TextAlign.center,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40),
                         child: Text(
                           l10n.homeText1,
-                          style: AppFonts.promptR16,
+                          style: FontsFoundation.primaryR16,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -130,8 +130,8 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                           suffixIcon: Icon(
                             Icons.chevron_right,
                             color: isDarkTheme
-                                ? AppColors.whiteFirst
-                                : AppColors.blackSecond,
+                                ? ColorsToken.white
+                                : ColorsToken.black,
                           ),
                           validator: (_) => null,
                           onChanged: (_) {},

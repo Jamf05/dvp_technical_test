@@ -8,7 +8,6 @@ import 'package:dvp_technical_test/features/domain/entities/address_entity.dart'
 import 'package:dvp_technical_test/features/domain/usecases/get_list_address_usecase.dart';
 import 'package:dvp_technical_test/features/domain/usecases/remove_address_usecase.dart';
 import 'package:dvp_technical_test/features/domain/usecases/set_address_usecase.dart';
-import 'package:dvp_technical_test/injection_container.dart';
 import 'package:equatable/equatable.dart';
 
 part 'address_list_event.dart';

@@ -20,14 +20,14 @@ class EmptyItemWidget extends StatelessWidget with BaseWidget {
           Icon(icon,
               size: 200,
               color: isDarkTheme
-                  ? AppColors.whiteFirst.withOpacity(0.15)
-                  : AppColors.greyFirst.withOpacity(0.15)),
+                  ? ColorsToken.white.withOpacity(0.15)
+                  : ColorsToken.gray300.withOpacity(0.15)),
           Text(message,
               textAlign: TextAlign.center,
-              style: AppFonts.promptR18.copyWith(
+              style: FontsFoundation.primaryR18.copyWith(
                   color: isDarkTheme
-                      ? AppColors.whiteFirst.withOpacity(0.15)
-                      : AppColors.greyFirst.withOpacity(0.15))),
+                      ? ColorsToken.white.withOpacity(0.15)
+                      : ColorsToken.gray300.withOpacity(0.15))),
         ],
       ),
     );

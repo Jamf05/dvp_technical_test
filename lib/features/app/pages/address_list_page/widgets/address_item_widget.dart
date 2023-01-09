@@ -28,12 +28,12 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
           children: <Widget>[
             IconButton(
               icon: SvgPicture.asset(
-                Assets.icons.mapPin,
+                AssetsToken.icons.mapPin,
                 color: (data.selected == true)
-                    ? AppSettings.colors.primaryColor
+                    ? ColorsFoundation.primary
                     : isDarkTheme
-                        ? AppColors.whiteFirst
-                        : AppColors.greyFirst,
+                        ? ColorsToken.white
+                        : ColorsToken.gray300,
               ),
               onPressed: () async => onSelecting.call(data),
             ),
@@ -46,7 +46,7 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                   SizedBox(
                     width: size.width * 0.55,
                     child:
-                        Text(data.name?.capitalize ?? '', style: AppFonts.promptL14),
+                        Text(data.name ?? '', style: FontsFoundation.primaryL14),
                   )
                 ],
               ),
@@ -59,19 +59,19 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                     return Row(
                       children: [
                         InkWell(
-                            child: SvgPicture.asset(Assets.icons.editIcon,
+                            child: SvgPicture.asset(AssetsToken.icons.editIcon,
                                 color: isDarkTheme
-                                    ? AppColors.whiteFirst
-                                    : AppColors.greyFirst),
+                                    ? ColorsToken.white
+                                    : ColorsToken.gray300),
                             onTap: () => onEdit.call(data)),
                         const SizedBox(
                           width: 10,
                         ),
                         InkWell(
-                            child: SvgPicture.asset(Assets.icons.deleteIcon,
+                            child: SvgPicture.asset(AssetsToken.icons.deleteIcon,
                                 color: isDarkTheme
-                                    ? AppColors.whiteFirst
-                                    : AppColors.greyFirst),
+                                    ? ColorsToken.white
+                                    : ColorsToken.gray300),
                             onTap: () => onDelete.call(data)),
                       ],
                     );
@@ -80,10 +80,10 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
                       child: SizedBox(
                         width: 30,
                         child: SvgPicture.asset(
-                          Assets.icons.dotsVerticalIcon,
+                          AssetsToken.icons.dotsVerticalIcon,
                           color: isDarkTheme
-                              ? AppColors.whiteFirst
-                              : AppColors.blackFirst,
+                              ? ColorsToken.white
+                              : ColorsToken.black,
                         ),
                       ),
                       onTap: () => showMoreOptions.value = true);

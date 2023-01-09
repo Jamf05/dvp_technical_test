@@ -162,8 +162,8 @@ class $AssetsSplashGen {
   List<dynamic> get values => [splash, splashIconPng, splashIconSvg];
 }
 
-class Assets {
-  Assets._();
+class AssetsToken {
+  AssetsToken._();
 
   static const $EnvGen env = $EnvGen();
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();

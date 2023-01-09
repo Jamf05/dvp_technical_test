@@ -29,13 +29,13 @@ class _AddressDetailPageState
   List<Widget> get actions => [
         IconButton(
             onPressed: () =>
-                AppTheme.selected.value = AppTheme.reverseBlueTheme,
+                ThemeFoundation.selected.value = ThemeFoundation.reverseBlueTheme,
             icon: Icon(
                 isDarkTheme
                     ? Icons.wb_sunny_outlined
                     : MdiIcons.weatherNightPartlyCloudy,
                 color:
-                    isDarkTheme ? AppColors.whiteFirst : AppColors.blackFirst))
+                    isDarkTheme ? ColorsToken.white : ColorsToken.black))
       ];
 
   @override

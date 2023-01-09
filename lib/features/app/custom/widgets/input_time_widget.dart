@@ -1,5 +1,5 @@
+import 'package:dvp_technical_test/core/design/design.dart';
 import 'package:flutter/material.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 
 class InputTimeWidget extends StatelessWidget {
   final String label;
@@ -27,7 +27,7 @@ class InputTimeWidget extends StatelessWidget {
           children: <Widget>[
             Text(
               label,
-              style: AppFonts.promptB16,
+              style: FontsFoundation.primaryB16,
             ),
             const Divider(color: Colors.white),
             Row(
@@ -35,7 +35,7 @@ class InputTimeWidget extends StatelessWidget {
               children: <Widget>[
                 Text(
                   time,
-                  style: AppFonts.promptR18,
+                  style: FontsFoundation.primaryR18,
                 ),
                 const Icon(Icons.arrow_drop_down)
               ],

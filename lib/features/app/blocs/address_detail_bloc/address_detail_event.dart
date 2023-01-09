@@ -14,7 +14,7 @@ class AddressDetailUpdateButtonEvent extends AddressDetailEvent {
 class SaveAddressEvent extends AddressDetailEvent {
   final AddressListBloc addressListBloc;
   final HomeBloc homeBloc;
-  final AppRouter router;
+  final SimpleRouter router;
   final CustomOverlay overlay;
   final AppLocalizations l10n;
   const SaveAddressEvent(
@@ -28,7 +28,7 @@ class SaveAddressEvent extends AddressDetailEvent {
 class SetAddressEvent extends AddressDetailEvent {
   final AddressListBloc addressListBloc;
   final HomeBloc homeBloc;
-  final AppRouter router;
+  final SimpleRouter router;
   final CustomOverlay overlay;
   final AppLocalizations l10n;
   const SetAddressEvent(

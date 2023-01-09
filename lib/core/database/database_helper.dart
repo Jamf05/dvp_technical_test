@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dvp_technical_test/core/env.dart';
-import 'package:dvp_technical_test/core/utils/database_utils.dart';
+import 'package:dvp_technical_test/core/database/database_utils.dart';
 import 'package:dvp_technical_test/core/utils/update_application_utils.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';

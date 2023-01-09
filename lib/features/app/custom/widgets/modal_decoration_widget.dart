@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
+import 'package:dvp_technical_test/core/design/design.dart';
 
 class ModalDecorationWidget extends StatelessWidget {
   const ModalDecorationWidget({Key? key}) : super(key: key);
@@ -8,7 +8,7 @@ class ModalDecorationWidget extends StatelessWidget {
     return Container(
       width: 34,
       height: 4,
-      decoration: BoxDecoration(color: AppColors.greySecond, borderRadius: BorderRadius.circular(6)),
+      decoration: BoxDecoration(color: ColorsToken.gray900, borderRadius: BorderRadius.circular(6)),
     );
   }
 }

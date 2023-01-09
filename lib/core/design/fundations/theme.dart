@@ -1,16 +1,13 @@
-part of 'app_settings.dart';
+part of './../design.dart';
 
-class AppTheme {
-  static final AppTheme _instance = AppTheme._internal();
-  AppTheme._internal();
-  factory AppTheme._() => _instance;
-  factory AppTheme._fromJson(Map<String, dynamic> json) => AppTheme._();
+class ThemeFoundation {
+  ThemeFoundation._();
 
   static ValueNotifier<ThemeData> selected = ValueNotifier(blueLight);
   static get _isDark => selected.value.brightness == Brightness.dark;
 
   static ThemeData get reverseRedTheme {
-    return _isDark ? AppTheme.redLight : AppTheme.redDark;
+    return _isDark ? ThemeFoundation.redLight : ThemeFoundation.redDark;
   }
 
   static final redLight = ThemeData(
@@ -35,7 +32,7 @@ class AppTheme {
   );
 
   static ThemeData get reverseGreenTheme =>
-      _isDark ? AppTheme.greenLight : AppTheme.greenDark;
+      _isDark ? ThemeFoundation.greenLight : ThemeFoundation.greenDark;
 
   static final greenLight = ThemeData(
     brightness: Brightness.light,
@@ -59,7 +56,7 @@ class AppTheme {
   );
 
   static ThemeData get reverseBlueTheme =>
-      _isDark ? AppTheme.blueLight : AppTheme.blueDark;
+      _isDark ? ThemeFoundation.blueLight : ThemeFoundation.blueDark;
 
   static final blueLight = ThemeData(
     brightness: Brightness.light,
@@ -83,7 +80,7 @@ class AppTheme {
   );
 
   static ThemeData get reverseOrangeTheme =>
-      _isDark ? AppTheme.orangeLight : AppTheme.orangeDark;
+      _isDark ? ThemeFoundation.orangeLight : ThemeFoundation.orangeDark;
 
   static final orangeLight = ThemeData(
     brightness: Brightness.light,

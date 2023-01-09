@@ -1,15 +1,13 @@
-export 'package:dvp_technical_test/core/routing/app_router.dart';
-export 'package:dvp_technical_test/core/settings/app_settings.dart';
-export 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
+export 'package:dvp_technical_test/core/design/design.dart';
 
-import 'package:dvp_technical_test/core/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';
 import 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
+import 'package:simple_router/simple_router.dart';
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
   late Size size;
-  late AppRouter router;
+  late SimpleRouter router;
   late CustomOverlay overlay; 
   late AppLocalizations l10n;
   late ThemeData theme;
@@ -23,7 +21,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   @override
   void didChangeDependencies() {
-    router = AppRouter.of(context);
+    router = SimpleRouter.of(context);
     size = MediaQuery.of(context).size;
     l10n = AppLocalizations.of(context);
     overlay = CustomOverlay.of(context);

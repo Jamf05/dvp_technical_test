@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:dvp_technical_test/core/env.dart';
 import 'package:dvp_technical_test/core/page/base_stateless.dart';
 
 class CustomBottomAppBar extends BaseStateless {
@@ -15,37 +14,37 @@ class CustomBottomAppBar extends BaseStateless {
       children: <Widget>[
         IconButton(
           icon: SvgPicture.asset(
-            Assets.icons.home,
+            AssetsToken.icons.home,
             width: 20.0,
-            color: AppColors.goldFirst,
+            color: ColorsToken.gold,
           ),
           onPressed: () {},
         ),
         IconButton(
           icon: SvgPicture.asset(
-            Assets.icons.heart,
+            AssetsToken.icons.heart,
             width: 20.0,
           ),
           onPressed: () {},
         ),
         IconButton(
           icon: SvgPicture.asset(
-            Assets.icons.search,
+            AssetsToken.icons.search,
             width: 20.0,
           ),
           onPressed: () {},
         ),
         IconButton(
             icon: SvgPicture.asset(
-              Assets.icons.question,
+              AssetsToken.icons.question,
               width: 20.0,
             ),
             onPressed: () async {
-              CustomOverlay.of(context).dialog(
-                  title: l10n.aboutApp,
-                  useSingleAction: true,
-                  message:
-                      "${l10n.version} ${Env.version} (${Env.releaseDate}) \n ${l10n.appCreatedAt}");
+              // CustomOverlay.of(context).dialog(
+              //     title: l10n.aboutApp,
+              //     useSingleAction: true,
+              //     message:
+              //         "${l10n.version} ${Env.version} (${Env.releaseDate}) \n ${l10n.appCreatedAt}");
             }),
       ],
     ));

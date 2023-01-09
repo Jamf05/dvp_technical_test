@@ -24,7 +24,7 @@ void main() {
     sqfliteFfiInit();
     // Change the default factory
     databaseFactory = databaseFactoryFfi;
-    await Env.load(fileName: Assets.env.env);
+    await Env.load(fileName: AssetsToken.env.env);
     DatabaseHelper.deleteDatabase();
     databaseHelper = await DatabaseHelper.init();
     addressLocalDataSource = AddressLocalDataSourceImpl(databaseHelper: databaseHelper);

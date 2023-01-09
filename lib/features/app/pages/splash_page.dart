@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dvp_technical_test/core/overlay/common/common_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dvp_technical_test/core/page/base_bloc_state.dart';
@@ -28,9 +29,11 @@ class SplashPageState extends BaseBlocState<SplashPage, SplashBloc> {
         listener: (context, state) {
           if (state is FailureState) {
             overlay.dialog(
-                title: 'Advertencia',
-                useSingleAction: true,
-                message: (state.failure.message));
+              child: CommonChildDialog(
+                  title: 'Advertencia',
+                  useSingleAction: true,
+                  message: (state.failure.message)),
+            );
           }
         },
         child: BlocBuilder(
@@ -46,7 +49,7 @@ class SplashPageState extends BaseBlocState<SplashPage, SplashBloc> {
             }
             return Center(
               child: Image.asset(
-                Assets.splash.splashIconPng.path,
+                AssetsToken.splash.splashIconPng.path,
                 width: size.width * 0.35,
                 alignment: Alignment.center,
               ),

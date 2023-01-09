@@ -1,5 +1,5 @@
+import 'package:dvp_technical_test/core/design/design.dart';
 import 'package:flutter/material.dart';
-import 'package:dvp_technical_test/core/settings/app_settings.dart';
 import 'package:dvp_technical_test/features/app/custom/widgets/circular_progress_indicator_widget.dart';
 class ButtonWidget extends StatelessWidget {
   final String? text;
@@ -48,14 +48,14 @@ class ButtonWidget extends StatelessWidget {
             onPressed: disable == true || loading == true ? () {} : onPressed,
             style: TextButton.styleFrom(
                 foregroundColor: Theme.of(context).brightness == Brightness.dark
-                    ? AppColors.whiteFirst
-                    : AppColors.blackFirst,
+                    ? ColorsToken.white
+                    : ColorsToken.black,
                 padding: EdgeInsets.zero,
                 backgroundColor: backgroundColor,
-                textStyle: textStyle ?? AppFonts.promptR14,
+                textStyle: textStyle ?? FontsFoundation.primaryR14,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
-                    side: const BorderSide(color: AppColors.greySecond))),
+                    side: const BorderSide(color: ColorsToken.gray900))),
             child: Container(
               margin: margin,
               width: width,
@@ -63,7 +63,7 @@ class ButtonWidget extends StatelessWidget {
               alignment: Alignment.center,
               child: loading == true
                   ? CircularProgressWidget(
-                      color: AppColors.greySecond,
+                      color: ColorsToken.gray900,
                       strokeWidth: strokeWidthLoading,
                       heightCPI: sizeLoading,
                       widthCPI: sizeLoading,
@@ -71,7 +71,7 @@ class ButtonWidget extends StatelessWidget {
                       width: sizeLoading,
                     )
                   : child ??
-                      Text(text ?? '', style: textStyle ?? AppFonts.promptR14),
+                      Text(text ?? '', style: textStyle ?? FontsFoundation.primaryR14),
             ),
           ),
         ),

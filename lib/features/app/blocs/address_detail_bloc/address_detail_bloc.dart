@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dvp_technical_test/core/failures/failure.dart';
 import 'package:dvp_technical_test/core/localization/app_localizations.dart';
 import 'package:dvp_technical_test/core/overlay/custom_overlay.dart';
-import 'package:dvp_technical_test/core/routing/app_router.dart';
 import 'package:dvp_technical_test/core/validators/text_input.dart';
 import 'package:dvp_technical_test/features/app/blocs/address_list_bloc/address_list_bloc.dart';
 import 'package:dvp_technical_test/features/app/blocs/home_bloc/home_bloc.dart';
@@ -12,6 +11,7 @@ import 'package:dvp_technical_test/features/domain/usecases/save_address_usecase
 import 'package:dvp_technical_test/features/domain/usecases/set_address_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:simple_router/simple_router.dart';
 
 part 'address_detail_event.dart';
 part 'address_detail_state.dart';
@@ -99,7 +99,7 @@ class AddressDetailBloc extends Bloc<AddressDetailEvent, AddressDetailState> {
   void runBasedOn(
       {required HomeBloc homeBloc,
       required AddressListBloc addressListBloc,
-      required AppRouter router,
+      required SimpleRouter router,
       required CustomOverlay overlay,
       required AppLocalizations l10n}) async {
     switch (_action) {
