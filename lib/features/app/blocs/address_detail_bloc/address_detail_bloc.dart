@@ -10,7 +10,6 @@ import 'package:dvp_technical_test/features/app/pages/address_detail_page/addres
 import 'package:dvp_technical_test/features/domain/entities/address_entity.dart';
 import 'package:dvp_technical_test/features/domain/usecases/save_address_usecase.dart';
 import 'package:dvp_technical_test/features/domain/usecases/set_address_usecase.dart';
-import 'package:dvp_technical_test/injection_container.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
