@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget with BaseWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
   const CustomTextField({
-    Key? key,
+    super.key,
     this.maxLength,
     this.maxLines = 1,
     this.minLines,
@@ -43,7 +43,7 @@ class CustomTextField extends StatelessWidget with BaseWidget {
     this.readOnly = false,
     this.onSaved,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

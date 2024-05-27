@@ -9,13 +9,13 @@ class WrapBanner extends StatelessWidget {
   final BannerLocation? location;
   final bool? visible;
   const WrapBanner({
-    Key? key,
+    super.key,
     required this.child,
     this.label = '',
     this.color = Colors.green,
     this.location = BannerLocation.topStart,
     this.visible = true,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     if (visible == true) {

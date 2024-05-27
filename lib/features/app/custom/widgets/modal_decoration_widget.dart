@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:dvp_technical_test/core/settings/app_settings.dart';
 
 class ModalDecorationWidget extends StatelessWidget {
-  const ModalDecorationWidget({Key? key}) : super(key: key);
+  const ModalDecorationWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(

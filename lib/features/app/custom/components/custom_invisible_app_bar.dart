@@ -12,14 +12,13 @@ class CustomInvisibleAppBar extends StatelessWidget
   final Widget? leading;
   final List<Widget>? actions;
   CustomInvisibleAppBar({
-    Key? key,
+    super.key,
     this.bottom,
     this.toolbarHeight,
     this.leading,
     this.actions,
   })  : preferredSize =
-            _PreferredAppBarSize(toolbarHeight, bottom?.preferredSize.height),
-        super(key: key);
+            _PreferredAppBarSize(toolbarHeight, bottom?.preferredSize.height);
   @override
   Widget build(BuildContext context) {
     return AppBar(

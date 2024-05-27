@@ -71,7 +71,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       _surname,
       _birthday,
     ]);
-    return form.isValid == true && user.address?.id != null;
+    return form == true && user.address?.id != null;
   }
 
   void _mapUpdateButtonEventToState(

@@ -25,7 +25,7 @@ class ExceptionFailure extends Failure {
 class DioFailure extends Failure {
   final int? statusCode;
   final Map? data;
-  final DioError? error;
+  final DioException? error;
   @override
   final String? message;
   DioFailure._({
@@ -34,7 +34,7 @@ class DioFailure extends Failure {
     this.error,
     this.message,
   });
-  factory DioFailure.decode(DioError? error,) {
+  factory DioFailure.decode(DioException? error,) {
     log(error.toString(), name: 'DIOFAILURE');
     log((error?.response?.statusCode).toString(), name: 'DIOFAILURE-STATUSCODE');
     log((error?.message).toString(), name: 'DIOFAILURE-MESSAGE');

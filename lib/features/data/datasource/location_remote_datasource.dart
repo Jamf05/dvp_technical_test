@@ -21,7 +21,7 @@ class LocationRemoteDataSourceImpl extends ApiProvider
       return (response.data["BODY"]["COUNTRIES"] as List)
           .map((e) => CountryModel.fromJson(e))
           .toList();
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       throw DioFailure.decode(error);
     }
   }
@@ -35,7 +35,7 @@ class LocationRemoteDataSourceImpl extends ApiProvider
       return (response.data["BODY"]["CITIES"] as List)
           .map((e) => CityModel.fromJson(e))
           .toList();
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       throw DioFailure.decode(error);
     }
   }

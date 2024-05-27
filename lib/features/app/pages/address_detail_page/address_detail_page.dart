@@ -15,8 +15,7 @@ class AddressDetailPage extends StatefulWidget {
   static const route = "/AddressDetailPage";
   final AddressEntity? address;
   final AddressDetailAction action;
-  const AddressDetailPage({Key? key, required this.action, this.address})
-      : super(key: key);
+  const AddressDetailPage({super.key, required this.action, this.address});
 
   @override
   State<AddressDetailPage> createState() => _AddressDetailPageState();
@@ -69,7 +68,7 @@ class _AddressDetailPageState
                   CustomTextField(
                     initialValue: widget.address?.name,
                     labelText: l10n.addressWord,
-                    validator: (_) => bloc.addressInput.invalid
+                    validator: (_) => bloc.addressInput.isNotValid
                         ? l10n.invalidFieldWord
                         : null,
                     onChanged: (String v) =>
@@ -82,7 +81,7 @@ class _AddressDetailPageState
                         current is AddressDetailUpdateButtonState,
                     builder: (context, state) {
                       return ButtonWidget(
-                          disable: !bloc.addressInput.valid,
+                          disable: !bloc.addressInput.isValid,
                           loading: bloc.sendingData,
                           padding: const EdgeInsets.only(bottom: 10),
                           text: l10n.saveWord,

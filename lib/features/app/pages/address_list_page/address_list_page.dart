@@ -14,7 +14,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 class AddressListPage extends StatefulWidget {
   static const route = "/AddressListPage";
-  const AddressListPage({Key? key}) : super(key: key);
+  const AddressListPage({super.key});
 
   @override
   State<AddressListPage> createState() => _AddressListPageState();

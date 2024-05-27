@@ -9,13 +9,12 @@ class AddressItemWidget extends StatelessWidget with BaseWidget {
   final void Function(AddressEntity address) onDelete;
   final void Function(AddressEntity address) onSelecting;
   AddressItemWidget(
-      {Key? key,
+      {super.key,
       required this.data,
       required this.onEdit,
       required this.onDelete,
       required this.onSelecting,
-  })
-      : super(key: key);
+  });
   final ValueNotifier<bool> showMoreOptions = ValueNotifier<bool>(false);
   @override
   Widget build(BuildContext context) {

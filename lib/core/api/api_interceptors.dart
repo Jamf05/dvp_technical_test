@@ -14,7 +14,7 @@ class ApiInterceptors extends Interceptor {
     super.onResponse(response, handler);
   }
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     log('ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}', name: "DIO");
     super.onError(err, handler);
   }

@@ -7,7 +7,7 @@ class TextFormInput extends FormzInput<String, TextFormInputError> {
   final int? end;
 
   const TextFormInput.pure({this.start, this.end}) : super.pure('');
-  const TextFormInput.dirty(String value, {this.start, this.end}) : super.dirty(value);
+  const TextFormInput.dirty(super.value, {this.start, this.end}) : super.dirty();
 
   TextFormInput copyWith(
     String value, {

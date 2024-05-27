@@ -10,7 +10,7 @@ class CircularProgressWidget extends StatelessWidget {
   final bool? center;
   final double strokeWidth;
   const CircularProgressWidget({
-    Key? key,
+    super.key,
     this.color,
     this.widthCPI = 40.0,
     this.heightCPI = 40.0,
@@ -18,7 +18,7 @@ class CircularProgressWidget extends StatelessWidget {
     this.height = 40.0,
     this.center = true,
     this.strokeWidth= 4.0,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     if (center == true) {

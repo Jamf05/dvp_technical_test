@@ -6,11 +6,11 @@ class DropdownWidget<T> extends StatelessWidget with BaseWidget {
   final List<DropdownMenuItem<T>> items;
   final Function(T?)? onChanged;
   const DropdownWidget({
-    Key? key,
+    super.key,
     required this.option,
     required this.items,
     this.onChanged
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

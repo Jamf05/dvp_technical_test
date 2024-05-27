@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 class AddressDetailTitleWidget extends StatelessWidget with BaseWidget {
   final AddressDetailAction action;
-  const AddressDetailTitleWidget({Key? key, required this.action})
-      : super(key: key);
+  const AddressDetailTitleWidget({super.key, required this.action});
   @override
   Widget build(BuildContext context) {
     BaseWidget.init(context);

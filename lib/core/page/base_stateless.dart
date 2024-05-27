@@ -11,7 +11,7 @@ abstract class BaseStateless extends StatelessWidget {
   static late ThemeData _theme;
   static late bool _isDarkTheme;
 
-  const BaseStateless({Key? key}) : super(key: key); 
+  const BaseStateless({super.key}); 
   AppLocalizations get l10n => BaseStateless._l10n;
   Size get size => BaseStateless._size;
   ThemeData get theme => BaseStateless._theme;

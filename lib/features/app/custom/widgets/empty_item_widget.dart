@@ -5,8 +5,7 @@ class EmptyItemWidget extends StatelessWidget with BaseWidget {
   final String message;
   final IconData? icon;
   final String? svg;
-  const EmptyItemWidget({Key? key, required this.message, this.icon, this.svg})
-      : super(key: key);
+  const EmptyItemWidget({super.key, required this.message, this.icon, this.svg});
 
   @override
   Widget build(BuildContext context) {

@@ -15,7 +15,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 class HomePage extends StatefulWidget {
   static const route = "/HomePage";
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   HomePageState createState() => HomePageState();
 }
@@ -55,15 +55,14 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
         ),
         body: BlocConsumer<HomeBloc, HomeState>(
           bloc: bloc,
-          buildWhen: (previous, current) =>
-                            current is HomeLoadingState,
+          buildWhen: (previous, current) => current is HomeLoadingState,
           listener: (context, state) {
-            if(state is HomeFailureState) {
+            if (state is HomeFailureState) {
               show.eitherError(state.failure);
             }
           },
           builder: (context, state) {
-            if(bloc.isLoadingPage) return const CircularProgressWidget();
+            if (bloc.isLoadingPage) return const CircularProgressWidget();
             return Stack(
               children: [
                 SingleChildScrollView(
@@ -93,7 +92,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                         initialValue: bloc.name.value,
                         labelText: l10n.nameWord,
                         validator: (_) =>
-                            bloc.name.invalid ? l10n.invalidFieldWord : null,
+                            bloc.name.isNotValid ? l10n.invalidFieldWord : null,
                         onChanged: (String v) =>
                             bloc.name = bloc.name.copyWith(v),
                       ),
@@ -103,8 +102,9 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                       CustomTextField(
                         initialValue: bloc.surname.value,
                         labelText: l10n.surnameWord,
-                        validator: (_) =>
-                            bloc.surname.invalid ? l10n.invalidFieldWord : null,
+                        validator: (_) => bloc.surname.isNotValid
+                            ? l10n.invalidFieldWord
+                            : null,
                         onChanged: (String v) =>
                             bloc.surname = bloc.surname.copyWith(v),
                       ),
@@ -115,7 +115,7 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                           readOnly: true,
                           controller: bloc.birthdayTextEditingCtrl,
                           labelText: l10n.birthdayWord,
-                          validator: (_) => bloc.birthday.invalid
+                          validator: (_) => bloc.birthday.isNotValid
                               ? l10n.invalidFieldWord
                               : null,
                           onChanged: (String _) {},
@@ -144,7 +144,8 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                           ),
                           validator: (_) => null,
                           onChanged: (_) {},
-                          onTap: () => nav.to(const AddressListPage(), binding: AddressListBinding())),
+                          onTap: () => nav.to(const AddressListPage(),
+                              binding: AddressListBinding())),
                     ],
                   ),
                 ),
@@ -158,15 +159,14 @@ class HomePageState extends BaseBlocState<HomePage, HomeBloc> {
                             current is UpdateButtonState,
                         builder: (context, state) {
                           return ButtonWidget(
-                            visible: WidgetsBinding
-                                    .instance.window.viewInsets.bottom ==
-                                0.0,
+                            visible: View.of(context).viewInsets.bottom == 0.0,
                             padding: const EdgeInsets.only(
                                 left: 23, right: 23, bottom: 10),
                             disable: !bloc.validForm,
                             loading: bloc.sendingData,
                             text: l10n.saveWord,
-                            onPressed: () => bloc.add(SetUserDataEvent(show, l10n)),
+                            onPressed: () =>
+                                bloc.add(SetUserDataEvent(show, l10n)),
                           );
                         },
                       )),

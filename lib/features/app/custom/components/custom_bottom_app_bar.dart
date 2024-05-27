@@ -4,7 +4,7 @@ import 'package:dvp_technical_test/core/env.dart';
 import 'package:dvp_technical_test/core/page/base_stateless.dart';
 
 class CustomBottomAppBar extends BaseStateless {
-  const CustomBottomAppBar({Key? key}) : super(key: key);
+  const CustomBottomAppBar({super.key});
   @override
   Widget build(BuildContext context) {
     BaseStateless.init(context);

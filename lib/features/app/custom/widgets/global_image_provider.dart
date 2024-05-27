@@ -19,7 +19,7 @@ class GlobalImageProvider extends StatelessWidget {
 
   const GlobalImageProvider(
       this.url,
-      {Key? key,
+      {super.key,
       this.placeholder,
       this.width,
       this.height,
@@ -29,8 +29,7 @@ class GlobalImageProvider extends StatelessWidget {
       this.fit,
       this.errorHolder,
       this.widgetHolder =
-          const CircularProgressWidget(color: AppColors.greySecond)})
-      : super(key: key);
+          const CircularProgressWidget(color: AppColors.greySecond)});
 
   @override
   Widget build(BuildContext context) {

@@ -8,13 +8,13 @@ class InputTimeWidget extends StatelessWidget {
   final double? width;
   final double? height;
   const InputTimeWidget({
-    Key? key,
+    super.key,
     required this.label,
     required this.time,
     required this.onTap,
     this.width = 130,
     this.height = 110,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

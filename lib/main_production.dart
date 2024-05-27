@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:dvp_technical_test/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,10 +14,6 @@ void main() async {
   await Env.load(fileName: Assets.env.envProduction);
   await di.init();
   sl.registerSingleton(GlobalSessionBloc());
-  runZoned<Future<void>>(
-    () async {
-      Bloc.observer = CustomBlocObserver();
-      runApp(const App());
-    },
-  );
+  Bloc.observer = CustomBlocObserver();
+  runApp(const App());
 }

@@ -3,17 +3,11 @@ import 'package:dvp_technical_test/features/domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
   const UserModel(
-      {int? id,
-      String? name,
-      String? surname,
-      AddressModel? address,
-      DateTime? birthday})
-      : super(
-            id: id,
-            name: name,
-            surname: surname,
-            address: address,
-            birthday: birthday);
+      {super.id,
+      super.name,
+      super.surname,
+      AddressModel? super.address,
+      super.birthday});
 
   factory UserModel.cast(UserEntity? e) {
     return UserModel(

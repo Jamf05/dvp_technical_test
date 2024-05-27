@@ -2,22 +2,15 @@ import 'package:dvp_technical_test/features/domain/entities/country_entity.dart'
 
 class CountryModel extends CountryEntity {
   const CountryModel({
-    String? id,
-    String? pais,
-    String? nombreIngles,
-    String? codigo,
-    String? indicativo,
-    String? bandera,
-    String? banderaFirmada,
+    super.id,
+    super.pais,
+    super.nombreIngles,
+    super.codigo,
+    super.indicativo,
+    super.bandera,
+    super.banderaFirmada,
     dynamic updatedAt,
   }) : super(
-          id: id,
-          pais: pais,
-          nombreIngles: nombreIngles,
-          codigo: codigo,
-          indicativo: indicativo,
-          bandera: bandera,
-          banderaFirmada: banderaFirmada,
           updatedAt: updatedAt,
         );
 

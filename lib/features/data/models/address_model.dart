@@ -2,10 +2,10 @@ import 'package:dvp_technical_test/features/domain/entities/address_entity.dart'
 
 class AddressModel extends AddressEntity {
   const AddressModel({
-    int? id,
-    bool? selected = false,
-    String? name = "",
-  }) : super(id: id, selected: selected, name: name);
+    super.id,
+    super.selected,
+    super.name,
+  });
 
   factory AddressModel.cast(AddressEntity? e) {
     return AddressModel(
